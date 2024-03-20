@@ -6,43 +6,47 @@ from django.urls import reverse_lazy
 from .serializers import TaskSerializer
 from django.contrib.auth.views import LoginView
 from rest_framework import viewsets
+from django.http import JsonResponse
+
 
 from .models import Task
 # Create your views here.
 
 class TodoViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.all()
-    serializer_class = TaskSerializer
+    serializer_class = TaskSerializer(Task, many=True)
+    # return JsonResponse(serializer.data)
     
     
-class CustomLoginView(LoginView):
-    template_name='todo/login.html'
-    fields='__all__'
-    redirect_authenticated_user=True
     
-    def get_success_url(self):
-        return reverse_lazy('tasks')
+# class CustomLoginView(LoginView):
+#     template_name='todo/login.html'
+#     fields='__all__'
+#     redirect_authenticated_user=True
+    
+#     def get_success_url(self):
+#         return reverse_lazy('tasks')
     
     
-class TaskList(ListView):
-    model= Task
-    context_object_name='tasks'
+# class TaskList(ListView):
+#     model= Task
+#     context_object_name='tasks'
     
-class TaskDetail(DetailView):
-    model=Task
-    context_object_name='task'
+# class TaskDetail(DetailView):
+#     model=Task
+#     context_object_name='task'
     
-class TaskCreate(CreateView):
-    model=Task
-    fields='__all__'
-    success_url=reverse_lazy('tasks') #redirecting user to tasks
+# class TaskCreate(CreateView):
+#     model=Task
+#     fields='__all__'
+#     success_url=reverse_lazy('tasks') #redirecting user to tasks
     
-class TaskUpdate(UpdateView):
-    model=Task
-    fields='__all__'
-    success_url=reverse_lazy('tasks')
+# class TaskUpdate(UpdateView):
+#     model=Task
+#     fields='__all__'
+#     success_url=reverse_lazy('tasks')
     
-class DeleteView(DeleteView):
-    model=Task
-    context_object_name= 'task'
-    success_url=reverse_lazy('tasks')
+# class DeleteView(DeleteView):
+#     model=Task
+#     context_object_name= 'task'
+#     success_url=reverse_lazy('tasks')
