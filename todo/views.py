@@ -35,4 +35,7 @@ class TodoViewSet(viewsets.ModelViewSet):
         instance.delete()
         return Response({f"message": f"Object with id {instance.id} deleted"}, status=status.HTTP_204_NO_CONTENT)
     
+
+# this is check comment
+    
     
