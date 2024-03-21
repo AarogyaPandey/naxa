@@ -5,5 +5,5 @@ from todo import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('todo/', views.TodoViewSet.as_view({'get':'list'})),
+    path('todo/', include('todo.urls')),
 ]
