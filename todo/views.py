@@ -6,6 +6,7 @@ from .models import Task
 from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
 # from rest_framework.pagination import CustomPageNumberPagination
+
 class MyPagination(PageNumberPagination):
     # pagination_class= PageNumberPagination
     page_size=2
@@ -23,19 +24,15 @@ class TodoViewSet(viewsets.ModelViewSet):
     def list(self, request, *args, **kwargs):
         '''
         this func deals with the filter if the  user wants to get all tasks or only completed ones.
+        pagination..
         '''
         completed = self.request.query_params.get("completed", None)
-        # print('hello', completed)
         # completed = self.request.data.get( "completed", "true" )
         if completed == "yes":
             self.queryset = Task.objects.filter(complete = True)
         else:
-            self.queryset = Task.objects.all()
-            
+            self.queryset = Task.objects.all() 
         return super().list(request,*args,**kwargs)
-        # serializer = self.serializer_class(queryset, many=True) 
-        # return Response({"result":serializer.data})
-        # return super().list(request,*args,**kwargs)
     
     def destroy(self, request, *args, **kwargs):
         '''
@@ -46,6 +43,5 @@ class TodoViewSet(viewsets.ModelViewSet):
         return Response({f"message": f"Object with id {instance.id} deleted"}, status=status.HTTP_204_NO_CONTENT)
     
 
-# this is check comment
     
     
