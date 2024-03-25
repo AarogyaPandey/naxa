@@ -4,21 +4,13 @@ from rest_framework import viewsets, status
 from django.http import JsonResponse
 from .models import Task
 from rest_framework.response import Response
-from rest_framework.pagination import PageNumberPagination
 from rest_framework.parsers import JSONParser
 from django.http import HttpResponse, JsonResponse
 from .serializers import TaskFilter
 from django_filters.rest_framework import  DjangoFilterBackend
-
-
-class MyPagination(PageNumberPagination):
-    """
-    This class  is used to set the pagination scheme for our API.
-    """
-    page_size=5
-    page_size_query_param='page_size'
-    max_page_size=2
-        
+from .pagination import MyPagination
+from django.views.decorators.csrf import  csrf_exempt
+from rest_framework.decorators import api_view
         
 class TodoViewSet(viewsets.ModelViewSet):
     '''
@@ -29,7 +21,9 @@ class TodoViewSet(viewsets.ModelViewSet):
     pagination_class=MyPagination
     filter_backends= [DjangoFilterBackend]
     filterset_class=TaskFilter
+    # filterset_fields=['category', 'is_completed']
     
+    #-----------the below code is  for customizing response using the modelviewset ---------------
     
     def list(self, request, *args, **kwargs):
         '''
@@ -52,51 +46,85 @@ class TodoViewSet(viewsets.ModelViewSet):
         instance = self.get_object()
         instance.delete()
         return Response({f"message": f"Object with id {instance.id} deleted"}, status=status.HTTP_204_NO_CONTENT)
+    #--------------------------------------------------------------------------------------------------------------------
     
     
-    def  task_list(request):
-        """
-        This method  returns a list of all the tasks in the database.
-        """
-        if request.method=='GET':
-            task=Task.objects.all()
-            serializer= TaskSerializer(task,many=True)
-            return JsonResponse(serializer.data, safe=False)
+    #------------------------------using decorater and function based api--------------------------------------
+@csrf_exempt   
+def  task_list(request):
+    """
+    This method  returns a list of all the tasks in the database.
+    """
+    if request.method=='GET':
+        task=Task.objects.all()
+        serializer= TaskSerializer(task,many=True)
+        return JsonResponse(serializer.data, safe=False)
+    
+    elif request.method=='POST':
+        data=JSONParser().parse(request)
+        serializer=TaskSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=201)
+        return JsonResponse(serializer.errors, status=400)
         
-        elif request.method=='POST':
-            data=JSONParser().parse(request)
-            serializer=TaskSerializer(data=data)
-            if serializer.is_valid():
-                serializer.save()
-                return JsonResponse(serializer.data, status=201)
-            return JsonResponse(serializer.errors, status=400)
-        
-        
-    def task_detail(request,pk):
-        """
-        This  method returns details about a particular task such as title , description and completion status.
-        Retrieve, update or delete a code snippet instance.
-        """
-        try:
-            task=Task.objects.get(pk=pk)
-        except task.DoesNotExist:
-            return HttpResponse(status=404)  
-        
-        if request.method=='GET':
-            serializer=TaskSerializer(task)
-            return JsonResponse(serializer.data)
-        
-        elif request.method=='PUT':
-            data=JSONParser().parse(request)
-            serializer=TaskSerializer(task,data=data)
+@csrf_exempt      
+def task_detail(request,pk):
+    """
+    This  method returns details about a particular task such as title , description and completion status.
+    Retrieve, update or delete a code snippet instance.
+    """
+    try:
+        task=Task.objects.get(pk=pk)
+    except task.DoesNotExist:
+        return HttpResponse(status=404)  
+    
+    if request.method=='GET':
+        serializer=TaskSerializer(task)
+        return JsonResponse(serializer.data)
+    
+    elif request.method=='PUT':
+        data=JSONParser().parse(request)
+        serializer=TaskSerializer(task,data=data)
 
-            if serializer.is_valid():
-                serializer.save()
-                return JsonResponse(serializer.data)
-            return JsonResponse(serializer.errors, status=400)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data)
+        return JsonResponse(serializer.errors, status=400)
+    
+    elif request.method=='DELETE':
+        task.delete()
+        return HttpResponse(status=204)
+    
+@api_view(['GET'])
+def todo_details(request): #url define
+    category_name=request.query_params.get("category", None)
+    if category_name is not None:
+        try:
+            task=Task.objects.filter(category=category_name)
+            print("task", task)
+        except Task.DoesNotExist:
+            return Response("Object does not exist", status=404)
+        serializer= TaskSerializer(task, many=True)
+        return Response(serializer.data, status=200)
+    
+    else:
+        return Response("category_name is required", status=400)
+    
+# @api_view(["GET"])
+# def get_todos(request):
+#     todos = Todo.objects.all()
+#     serializer = TodoSerializer(todos, many=True)
+#     return Response(serializer.data)
+@csrf_exempt
+@api_view(["POST"])
+def todo_post(request): #url define
+    obj_post=TaskSerializer(data=request.data)
+    if obj_post.is_valid():
+        obj_post.save()
+        return Response(obj_post.data, status=201)
+        # return Response("Successfully Created on Post Method") 
         
-        elif request.method=='DELETE':
-            task.delete()
-            return HttpResponse(status=204)
+            
         
     
