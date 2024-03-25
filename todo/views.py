@@ -11,6 +11,7 @@ from django_filters.rest_framework import  DjangoFilterBackend
 from .pagination import MyPagination
 from django.views.decorators.csrf import  csrf_exempt
 from rest_framework.decorators import api_view
+from rest_framework.pagination import PageNumberPagination
         
 class TodoViewSet(viewsets.ModelViewSet):
     '''
@@ -111,11 +112,24 @@ def todo_details(request): #url define
     else:
         return Response("category_name is required", status=400)
     
+@api_view(['GET'])
+def todo_details(request):
+    paginator=PageNumberPagination()
+    paginator.page_size=4
+    todo_obj=Task.objects.all()
+    result_page=paginator.paginate_queryset(todo_obj,request)
+    serializer =TaskSerializer(result_page,many=True)
+    return paginator.get_paginated_response(serializer.data)
+    
+    
+
+    
 # @api_view(["GET"])
 # def get_todos(request):
 #     todos = Todo.objects.all()
 #     serializer = TodoSerializer(todos, many=True)
 #     return Response(serializer.data)
+
 @csrf_exempt
 @api_view(["POST"])
 def todo_post(request): #url define
@@ -125,6 +139,14 @@ def todo_post(request): #url define
         return Response(obj_post.data, status=201)
         # return Response("Successfully Created on Post Method") 
         
+@api_view(['POST'])
+def todo_post(request):
+    paginator=PageNumberPagination()
+    paginator.page_size=4
+    todo_obj=Task.objects.all()
+    result_page=paginator.paginate_queryset(todo_obj,request)
+    serializer =TaskSerializer(result_page,many=True)
+    return paginator.get_paginated_response(serializer.data)        
             
         
     
