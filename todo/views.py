@@ -22,7 +22,6 @@ class TodoViewSet(viewsets.ModelViewSet):
     pagination_class=MyPagination
     filter_backends= [DjangoFilterBackend]
     filterset_class=TaskFilter
-    # filterset_fields=['category', 'is_completed']
     
     #-----------the below code is  for customizing response using the modelviewset ---------------
     
@@ -45,8 +44,9 @@ class TodoViewSet(viewsets.ModelViewSet):
         It is a func  that handles deleting an object
         '''
         instance = self.get_object()
+        instance_id=instance.id
         instance.delete()
-        return Response({f"message": f"Object with id {instance.id} deleted"}, status=status.HTTP_204_NO_CONTENT)
+        return Response({f"message": f"Object with id {instance_id} deleted"}, status=status.HTTP_204_NO_CONTENT)
     #--------------------------------------------------------------------------------------------------------------------
     
     
@@ -103,12 +103,11 @@ def todo_details(request): #url define
     This function  is used to get all the tasks of user which is based in category.
     '''
     category_name=request.query_params.get("category", None)
-    if category_name is not None:
+    if category_name:
         try:
             task=Task.objects.filter(category=category_name)
-            print("task", task)
-        except Task.DoesNotExist:
-            return Response("Object does not exist", status=404)
+        except Exception  as e :
+            return Response(f"Error: {str(e)}", status=404)
         serializer= TaskSerializer(task, many=True)
         return Response(serializer.data, status=200)
     
