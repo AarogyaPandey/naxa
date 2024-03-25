@@ -33,19 +33,7 @@ class Task(models.Model):
         max_length=15,
         choices=STATUS_CHOICES,
         default="N/A",
-    )
-        
-        # WORK= "WK", "Work"
-        # PERSONAL= "PRSNL", "Personal"
-        # STUDY= "STDY", "Study"
-        # HEALTH= "HLT", "Health"
-        # FINANCE= "FNS", "Finance"
-        # HOME= "HM" , "Home"
-        # SOCIAL= "SCL", "Social"
-        # SHOPPING= "SPNG","Shopping"
-        # ENTERTAINMENT= "ENTNT" ,"Entertainment"
-        
-    
+    )    
     
     def __str__(self):
         '''

@@ -14,28 +14,6 @@ class TaskSerializer(serializers.ModelSerializer):
         '''
         model=Task
         fields = ('id','user', 'title','description', 'is_completed','is_created', 'due_date', 'estimated_hours','category')
-        
-        
-    # def create(self,  validated_data):
-    #     """
-    #     This  method overrides the default `create` method of the serializer to add extra functionality.
-    #     """
-    #     return  Task.objects.create(**validated_data)
-    
-    
-    # def update(self, instance, validated_data):
-    #     """
-    #     This   method overrides the default `update` method of the serializer to add extra functionality.
-    #     """
-    #     instance.title=validated_data.get('title', instance.title)
-    #     instance.description=validated_data.get('description', instance.description)
-    #     instance.is_completed=validated_data.get('is_completed', instance.is_completed)
-    #     instance.is_created=validated_data.get('is_created', instance.is_created)
-    #     instance.due_date=validated_data.get('due_date', instance.due_date)
-    #     instance.estimated_hours=validated_data.get('estimated_hours', instance.estimated_hours)
-    #     instance.save()
-    #     return instance
-    
     
 class TaskFilter(django_filters.FilterSet):
     """

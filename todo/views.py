@@ -22,7 +22,6 @@ class TodoViewSet(viewsets.ModelViewSet):
     pagination_class=MyPagination
     filter_backends= [DjangoFilterBackend]
     filterset_class=TaskFilter
-    # filterset_fields=['category', 'is_completed']
     
     #-----------the below code is  for customizing response using the modelviewset ---------------
     
@@ -45,8 +44,9 @@ class TodoViewSet(viewsets.ModelViewSet):
         It is a func  that handles deleting an object
         '''
         instance = self.get_object()
+        instance_id=instance.id
         instance.delete()
-        return Response({f"message": f"Object with id {instance.id} deleted"}, status=status.HTTP_204_NO_CONTENT)
+        return Response({f"message": f"Object with id {instance_id} deleted"}, status=status.HTTP_204_NO_CONTENT)
     #--------------------------------------------------------------------------------------------------------------------
     
     
@@ -99,13 +99,15 @@ def task_detail(request,pk):
     
 @api_view(['GET'])
 def todo_details(request): #url define
+    '''
+    This function  is used to get all the tasks of user which is based in category.
+    '''
     category_name=request.query_params.get("category", None)
-    if category_name is not None:
+    if category_name:
         try:
             task=Task.objects.filter(category=category_name)
-            print("task", task)
-        except Task.DoesNotExist:
-            return Response("Object does not exist", status=404)
+        except Exception  as e :
+            return Response(f"Error: {str(e)}", status=404)
         serializer= TaskSerializer(task, many=True)
         return Response(serializer.data, status=200)
     
@@ -114,39 +116,29 @@ def todo_details(request): #url define
     
 @api_view(['GET'])
 def todo_details(request):
+    '''
+    This function is used for getting the four detailed data in one page.
+    '''
     paginator=PageNumberPagination()
     paginator.page_size=4
     todo_obj=Task.objects.all()
     result_page=paginator.paginate_queryset(todo_obj,request)
     serializer =TaskSerializer(result_page,many=True)
     return paginator.get_paginated_response(serializer.data)
-    
-    
 
-    
-# @api_view(["GET"])
-# def get_todos(request):
-#     todos = Todo.objects.all()
-#     serializer = TodoSerializer(todos, many=True)
-#     return Response(serializer.data)
 
 @csrf_exempt
 @api_view(["POST"])
 def todo_post(request): #url define
+    '''
+    This function is for the POST request.
+    '''
     obj_post=TaskSerializer(data=request.data)
     if obj_post.is_valid():
         obj_post.save()
         return Response(obj_post.data, status=201)
-        # return Response("Successfully Created on Post Method") 
         
-@api_view(['POST'])
-def todo_post(request):
-    paginator=PageNumberPagination()
-    paginator.page_size=4
-    todo_obj=Task.objects.all()
-    result_page=paginator.paginate_queryset(todo_obj,request)
-    serializer =TaskSerializer(result_page,many=True)
-    return paginator.get_paginated_response(serializer.data)        
+        
             
         
     
