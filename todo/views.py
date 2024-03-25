@@ -12,6 +12,9 @@ from .pagination import MyPagination
 from django.views.decorators.csrf import  csrf_exempt
 from rest_framework.decorators import api_view
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.views import  APIView
+from rest_framework.response import Response
+from rest_framework import status
         
 class TodoViewSet(viewsets.ModelViewSet):
     '''
@@ -31,7 +34,6 @@ class TodoViewSet(viewsets.ModelViewSet):
         
         '''
         completed = self.request.query_params.get("completed", None)
-        # completed = self.request.data.get( "completed", "true" )
         if completed == "yes":
             self.queryset = Task.objects.filter(complete = True)
         else:
@@ -138,7 +140,23 @@ def todo_post(request): #url define
         obj_post.save()
         return Response(obj_post.data, status=201)
         
+        #----------------------Class Based API---------------------------
         
+class TodoDetails(APIView):
+    def get(self, request):
+        category_name=request.query_params.get('category',None)
+        if category_name is not None:
+            try:
+                tasks=Task.objects.filter(category=category_name)
+                serializer=TaskSerializer(tasks,many=True)
+                return  Response(serializer.data)
+            except Exception as e:
+                return Response("Error Occurred : "+str(e),status=404)
+        else:
+            tasks=Task.objects.all()
+            serializer=TaskSerializer(tasks, many=True)
+            return Response(serializer.data,status=200)
+                
             
         
     
