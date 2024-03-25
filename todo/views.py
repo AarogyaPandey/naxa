@@ -99,6 +99,9 @@ def task_detail(request,pk):
     
 @api_view(['GET'])
 def todo_details(request): #url define
+    '''
+    This function  is used to get all the tasks of user which is based in category.
+    '''
     category_name=request.query_params.get("category", None)
     if category_name is not None:
         try:
@@ -114,39 +117,29 @@ def todo_details(request): #url define
     
 @api_view(['GET'])
 def todo_details(request):
+    '''
+    This function is used for getting the four detailed data in one page.
+    '''
     paginator=PageNumberPagination()
     paginator.page_size=4
     todo_obj=Task.objects.all()
     result_page=paginator.paginate_queryset(todo_obj,request)
     serializer =TaskSerializer(result_page,many=True)
     return paginator.get_paginated_response(serializer.data)
-    
-    
 
-    
-# @api_view(["GET"])
-# def get_todos(request):
-#     todos = Todo.objects.all()
-#     serializer = TodoSerializer(todos, many=True)
-#     return Response(serializer.data)
 
 @csrf_exempt
 @api_view(["POST"])
 def todo_post(request): #url define
+    '''
+    This function is for the POST request.
+    '''
     obj_post=TaskSerializer(data=request.data)
     if obj_post.is_valid():
         obj_post.save()
         return Response(obj_post.data, status=201)
-        # return Response("Successfully Created on Post Method") 
         
-@api_view(['POST'])
-def todo_post(request):
-    paginator=PageNumberPagination()
-    paginator.page_size=4
-    todo_obj=Task.objects.all()
-    result_page=paginator.paginate_queryset(todo_obj,request)
-    serializer =TaskSerializer(result_page,many=True)
-    return paginator.get_paginated_response(serializer.data)        
+        
             
         
     
