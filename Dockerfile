@@ -19,4 +19,4 @@ COPY . /code/
 RUN pip3 install -r requirements.txt
 
 # Now i have my dependencies  installed, i will try to run my django app.
-CMD ["python", "manage.py", "runserver"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
