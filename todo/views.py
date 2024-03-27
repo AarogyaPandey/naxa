@@ -2,19 +2,19 @@ from django.shortcuts import render
 from .serializers import TaskSerializer
 from rest_framework import viewsets, status
 from django.http import JsonResponse
-from .models import Task
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 from django.http import HttpResponse, JsonResponse
-from .serializers import TaskFilter
+from todo.filters import TaskFilter
 from django_filters.rest_framework import  DjangoFilterBackend
 from .pagination import MyPagination
 from django.views.decorators.csrf import  csrf_exempt
 from rest_framework.decorators import api_view
-from rest_framework.pagination import PageNumberPagination
 from rest_framework.views import  APIView
 from rest_framework.response import Response
 from rest_framework import status
+
+from todo.models import Task
         
 class TodoViewSet(viewsets.ModelViewSet):
     '''
@@ -100,38 +100,29 @@ def task_detail(request,pk):
         return HttpResponse(status=204)
     
 @api_view(['GET'])
-def todo_details(request): #url define
+def todo_details(request): 
+    print('check print')
     '''
     This function  is used to get all the tasks of user which is based in category.
     '''
     category_name=request.query_params.get("category", None)
+    paginator=MyPagination()
     if category_name:
         try:
             task=Task.objects.filter(category=category_name)
+            result_page=paginator.paginate_queryset(task,request)
+            serializer =TaskSerializer(result_page,many=True)
+            return paginator.get_paginated_response(serializer.data)
         except Exception  as e :
             return Response(f"Error: {str(e)}", status=404)
-        serializer= TaskSerializer(task, many=True)
-        return Response(serializer.data, status=200)
     
     else:
         return Response("category_name is required", status=400)
-    
-@api_view(['GET'])
-def todo_details(request):
-    '''
-    This function is used for getting the four detailed data in one page.
-    '''
-    paginator=PageNumberPagination()
-    paginator.page_size=4
-    todo_obj=Task.objects.all()
-    result_page=paginator.paginate_queryset(todo_obj,request)
-    serializer =TaskSerializer(result_page,many=True)
-    return paginator.get_paginated_response(serializer.data)
 
 
 @csrf_exempt
 @api_view(["POST"])
-def todo_post(request): #url define
+def todo_post(request): 
     '''
     This function is for the POST request.
     '''
@@ -143,12 +134,18 @@ def todo_post(request): #url define
         #----------------------Class Based API---------------------------
         
 class TodoDetails(APIView):
+    """
+    This class  is used to handle HTTP GET requests
+
+    """
     def get(self, request):
         category_name=request.query_params.get('category',None)
+        paginator=MyPagination()
         if category_name is not None:
             try:
                 tasks=Task.objects.filter(category=category_name)
-                serializer=TaskSerializer(tasks,many=True)
+                result_page=paginator.paginate_queryset(tasks,request)
+                serializer=TaskSerializer(result_page,many=True)
                 return  Response(serializer.data)
             except Exception as e:
                 return Response("Error Occurred : "+str(e),status=404)

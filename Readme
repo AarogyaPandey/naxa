@@ -1,0 +1,17 @@
+1. Base = Python 3.xxx
+2. mkdir /code   ,,,  /root /src/ /users/
+3. WORKDIR /code
+4. COPY ALL -> CONTAINER
+5. pip install requirements.txt
+5. ./manage.py runserver 
+6. EXPOSE 8000
+
+
+1. Building an Image.
+2. Running a container from that image.
+3. Making changes to the Image.
+4. Running again the image an verifying the changes.
+------------------
+5. Running the same image using docker-compose.
+6. Exposing a port in docker compose.
+7. Volumes in Docker compose
