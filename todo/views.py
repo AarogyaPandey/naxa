@@ -175,6 +175,37 @@ class TodoDetails(APIView):
             tasks=Task.objects.all()
             serializer=TaskSerializer(tasks, many=True)
             return Response(serializer.data,status=200)
+        
+class TodoPost(APIView):
+    '''
+    This class  is used to handle HTTP POST. It validates data and save it into database.
+    '''
+    def post(self,request,pk):
+        task = Task.objects.filter(id=pk)
+        if not task:
+            return Response({"error":"Invalid ID"},status=404)
+        else:
+            data=request.data
+            serializer=TaskSerializer(instance=task,data=data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            else:
+                return Response(serializer.errors)
+            
+class TodoDelete(APIView):
+    '''
+    This  class is used for handling Http DELETE Requests.It deletes the object based on given id.
+    '''
+    def  delete(self,request,pk):
+        task=Task.objects.filter(id=pk).delete()
+        if task:
+            return Response("deleted", status=204)
+        else:
+            return Response({"error"}, status=404)
+            
+ 
+            
                 
             
         
