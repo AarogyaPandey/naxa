@@ -14,4 +14,5 @@ urlpatterns=[
      path('get_val/', todo_details, name='get_val'),
      path('post_val/', todo_post, name='post_val'),
      path('todo-details/', TodoDetails.as_view(), name='todo-details'),
+     path('get_list/', task_list, name='get_list'),
 ]

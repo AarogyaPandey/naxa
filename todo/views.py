@@ -34,12 +34,30 @@ class TodoViewSet(viewsets.ModelViewSet):
         
         '''
         completed = self.request.query_params.get("completed", None)
-        if completed == "yes":
+        if completed == "True":
             self.queryset = Task.objects.filter(complete = True)
         else:
             self.queryset = Task.objects.all() 
         return super().list(request,*args,**kwargs)
     
+    def  retrieve(self, request, *args, **kwargs):
+        """
+        Returns the specified task instance.
+        """
+        obj = self.get_object()
+        serializer = self.get_serializer(obj)
+        data = serializer.data
+        return Response(data)
+    
+    def create(self, request, *args, **kwargs):
+        '''
+        This function adds a new task in the database.
+        '''
+        serializer=TaskSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
     
     def destroy(self, request, *args, **kwargs):
         '''
@@ -58,9 +76,12 @@ def  task_list(request):
     """
     This method  returns a list of all the tasks in the database.
     """
+    category_name=request.query_params.get("category", None)
+    paginator=MyPagination()
     if request.method=='GET':
-        task=Task.objects.all()
-        serializer= TaskSerializer(task,many=True)
+        task=Task.objects.all(category=category_name)
+        result=paginator.paginate_queryset(task,request)
+        serializer= TaskSerializer(result,many=True)
         return JsonResponse(serializer.data, safe=False)
     
     elif request.method=='POST':
@@ -101,7 +122,6 @@ def task_detail(request,pk):
     
 @api_view(['GET'])
 def todo_details(request): 
-    print('check print')
     '''
     This function  is used to get all the tasks of user which is based in category.
     '''
@@ -141,12 +161,12 @@ class TodoDetails(APIView):
     def get(self, request):
         category_name=request.query_params.get('category',None)
         paginator=MyPagination()
-        if category_name is not None:
+        if category_name:
             try:
                 tasks=Task.objects.filter(category=category_name)
                 result_page=paginator.paginate_queryset(tasks,request)
                 serializer=TaskSerializer(result_page,many=True)
-                return  Response(serializer.data)
+                return paginator.get_paginated_response(serializer.data)
             except Exception as e:
                 return Response("Error Occurred : "+str(e),status=404)
         else:
