@@ -203,6 +203,37 @@ class TodoDelete(APIView):
             return Response("deleted", status=204)
         else:
             return Response({"error"}, status=404)
+        
+class TodoPatch(APIView):
+    '''
+    This class  handles HTTP PATCH requests. It updates a particular field in the database.
+    '''
+    def  patch(self, request, pk):
+        task = Task.objects.get(id=pk)
+        data = {'is_completed': True}
+        serializer = TaskSerializer(task, data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors)
+        
+        
+class TodoPut(APIView):
+    '''
+    This class  handles HTTP Put requests which update an instance of Task model.
+    '''
+    def put(self, request, pk):
+        try:
+            task=Task.objects.get(id=pk)
+        except Exception as e:
+            return Response(str(e),status=404)
+        serializer=TaskSerializer(task,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors)
             
  
             
