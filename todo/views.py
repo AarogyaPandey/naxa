@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .serializers import TaskSerializer
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, filters
 from django.http import JsonResponse
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
@@ -23,8 +23,10 @@ class TodoViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
     pagination_class=MyPagination
-    filter_backends= [DjangoFilterBackend]
+    filter_backends= [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_class=TaskFilter
+    search_fields=['title', 'category','estimated_hours']
+    ordering_fields= ['id', 'category', 'title']
     
     #-----------the below code is  for customizing response using the modelviewset ---------------
     
