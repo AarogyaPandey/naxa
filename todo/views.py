@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .serializers import TaskSerializer
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, filters
 from django.http import JsonResponse
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
@@ -23,8 +23,10 @@ class TodoViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
     pagination_class=MyPagination
-    filter_backends= [DjangoFilterBackend]
+    filter_backends= [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_class=TaskFilter
+    search_fields=['title', 'category','estimated_hours']
+    ordering_fields= ['id', 'category', 'title']
     
     #-----------the below code is  for customizing response using the modelviewset ---------------
     
@@ -34,12 +36,30 @@ class TodoViewSet(viewsets.ModelViewSet):
         
         '''
         completed = self.request.query_params.get("completed", None)
-        if completed == "yes":
+        if completed == "True":
             self.queryset = Task.objects.filter(complete = True)
         else:
             self.queryset = Task.objects.all() 
         return super().list(request,*args,**kwargs)
     
+    def  retrieve(self, request, *args, **kwargs):
+        """
+        Returns the specified task instance.
+        """
+        obj = self.get_object()
+        serializer = self.get_serializer(obj)
+        data = serializer.data
+        return Response(data)
+    
+    def create(self, request, *args, **kwargs):
+        '''
+        This function adds a new task in the database.
+        '''
+        serializer=TaskSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
     
     def destroy(self, request, *args, **kwargs):
         '''
@@ -58,9 +78,12 @@ def  task_list(request):
     """
     This method  returns a list of all the tasks in the database.
     """
+    category_name=request.query_params.get("category", None)
+    paginator=MyPagination()
     if request.method=='GET':
-        task=Task.objects.all()
-        serializer= TaskSerializer(task,many=True)
+        task=Task.objects.all(category=category_name)
+        result=paginator.paginate_queryset(task,request)
+        serializer= TaskSerializer(result,many=True)
         return JsonResponse(serializer.data, safe=False)
     
     elif request.method=='POST':
@@ -101,7 +124,6 @@ def task_detail(request,pk):
     
 @api_view(['GET'])
 def todo_details(request): 
-    print('check print')
     '''
     This function  is used to get all the tasks of user which is based in category.
     '''
@@ -141,18 +163,80 @@ class TodoDetails(APIView):
     def get(self, request):
         category_name=request.query_params.get('category',None)
         paginator=MyPagination()
-        if category_name is not None:
+        if category_name:
             try:
                 tasks=Task.objects.filter(category=category_name)
                 result_page=paginator.paginate_queryset(tasks,request)
                 serializer=TaskSerializer(result_page,many=True)
-                return  Response(serializer.data)
+                return paginator.get_paginated_response(serializer.data)
             except Exception as e:
                 return Response("Error Occurred : "+str(e),status=404)
         else:
             tasks=Task.objects.all()
             serializer=TaskSerializer(tasks, many=True)
             return Response(serializer.data,status=200)
+        
+class TodoPost(APIView):
+    '''
+    This class  is used to handle HTTP POST. It validates data and save it into database.
+    '''
+    def post(self,request,pk):
+        task = Task.objects.filter(id=pk)
+        if not task:
+            return Response({"error":"Invalid ID"},status=404)
+        else:
+            data=request.data
+            serializer=TaskSerializer(instance=task,data=data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            else:
+                return Response(serializer.errors)
+            
+class TodoDelete(APIView):
+    '''
+    This  class is used for handling Http DELETE Requests.It deletes the object based on given id.
+    '''
+    def  delete(self,request,pk):
+        task=Task.objects.filter(id=pk).delete()
+        if task:
+            return Response("deleted", status=204)
+        else:
+            return Response({"error"}, status=404)
+        
+class TodoPatch(APIView):
+    '''
+    This class  handles HTTP PATCH requests. It updates a particular field in the database.
+    '''
+    def  patch(self, request, pk):
+        task = Task.objects.get(id=pk)
+        data = {'is_completed': True}
+        serializer = TaskSerializer(task, data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors)
+        
+        
+class TodoPut(APIView):
+    '''
+    This class  handles HTTP Put requests which update an instance of Task model.
+    '''
+    def put(self, request, pk):
+        try:
+            task=Task.objects.get(id=pk)
+        except Exception as e:
+            return Response(str(e),status=404)
+        serializer=TaskSerializer(task,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors)
+            
+ 
+            
                 
             
         
