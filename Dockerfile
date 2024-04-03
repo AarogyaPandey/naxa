@@ -1,22 +1,43 @@
-FROM python:3
-# Starts from python:3 Image
+FROM naxa/python:3.9-slim
+# Uses naxa/python:3.9-slim instead of python:3.9-slim so that
+# apt/requirement doesn't have to reinstall everytime
 
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
-# Sets some env vars.
-
-# I need a directory inside image to put my code, so i make a directory called code.
-RUN mkdir /code
-
-
-# Now this code directory is created, i need this dir to be my working dir.
+ENV PYTHONUNBUFFERED 1
+RUN mkdir -p /code
+RUN mkdir -p /sock
+RUN mkdir -p /logs
 WORKDIR /code
 
-# Now i have my /code as a default dir, I am going to copy all my code inside this dir.
-COPY . /code/
+# COPY apt_requirements.txt /code/
+RUN apt-get -y update
+# RUN cat apt_requirements.txt | xargs apt -y --no-install-recommends install && \
+# 	rm -rf /var/lib/apt/lists/* && \
+# 	apt autoremove && \
+# 	apt autoclean
+RUN apt-get -y --no-install-recommends install \
+curl \
+libpangocairo-1.0-0 \
+libpq-dev \
+python-dev \
+libproj-dev \
+libc-dev \
+binutils \
+gettext \
+make \
+cmake \
+gcc \
+gdal-bin \
+libgdal-dev \
+g++
 
-# Now i have my code, i will install packages from requirements.txt
-RUN pip3 install -r requirements.txt
+ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
+ENV C_INCLUDE_PATH=/usr/include/gdal
 
-# Now i have my dependencies  installed, i will try to run my django app.
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+COPY requirements.txt /code/
+
+#required for gdal installation
+RUN pip install --no-cache-dir setuptools==57.5.0
+RUN pip install --no-cache-dir -r requirements.txt
+RUN rm /code/requirements.txt
+
+COPY . /code
