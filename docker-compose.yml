@@ -1,40 +1,36 @@
-version: '3'
+version: "3"
+
 services:
-    postgres:
-        image: postgres:latest
-        environment:
-            POSTGRES_USER: user
-            POSTGRES_PASSWORD: 12345
-        volumes:
-            - ./data/db:/var/lib/postgresql/data
-        ports:
-            - "5433:5432"
+  web:
+    env_file:
+      - .env
+    restart: always
+    build: .
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    networks:
+      - task-network
+    depends_on:
+      - db
+    entrypoint: ./entrypoint.sh
 
-    pgadmin: 
-        image: dpage/pgadmin4
-        restart: "no"
-        environment:
-            PGADMIN_DEFAULT_EMAIL: aarogya5.naxa@gmail.com
-            PGADMIN_DEFAULT_PASSWORD: password
-            PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: "True"
-            PGADMIN_CONFIG_CONSOLE_LOG_LEVEL: 10
-        ports:
-            - "8000:80"
+  db:
+    image: postgis/postgis:16-3.4-alpine
+    restart: always
+    volumes:
+      - ./postgis_data:/var/lib/postgresql/data/
+    env_file:
+      - .env
+    networks:
+      - task-network
+    ports:
+      - 5433:5432
 
-    db:
-        image: postgis/postgis:16-3.4
-        restart: "no"
-        environment:
-            POSTGRES_PASSWORD: password
-        ports:
-            - "5434:5432"
-        volumes:
-            - ./data/db:/var/lib/postgresql/data
-
-    
-volumes:
-    data:
-        name: data-postgis16-data
+networks:
+  task-network:
+    driver: bridge
 
 
 

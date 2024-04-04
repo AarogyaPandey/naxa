@@ -12,5 +12,5 @@ class TaskSerializer(serializers.ModelSerializer):
         This class  contains additional information about the fields of this serializer.
         '''
         model=Task
-        fields = ('id','user', 'title','description', 'is_completed','is_created', 'due_date', 'estimated_hours','category')
+        fields = ('id','user', 'title','description', 'is_completed','location','is_created', 'due_date', 'estimated_hours','category')
     

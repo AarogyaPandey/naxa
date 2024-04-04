@@ -13,6 +13,11 @@ from rest_framework.decorators import api_view
 from rest_framework.views import  APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import permission_classes, authentication_classes
+
 
 from todo.models import Task
         
@@ -27,9 +32,12 @@ class TodoViewSet(viewsets.ModelViewSet):
     filterset_class=TaskFilter
     search_fields=['title', 'category','estimated_hours']
     ordering_fields= ['id', 'category', 'title']
+    authentication_classes=[TokenAuthentication] 
+    permission_classes=[IsAuthenticated]
+    
     
     #-----------the below code is  for customizing response using the modelviewset ---------------
-    
+
     def list(self, request, *args, **kwargs):
         '''
         this func deals with the filter if the  user wants to get all tasks or only completed ones.
@@ -73,7 +81,10 @@ class TodoViewSet(viewsets.ModelViewSet):
     
     
     #------------------------------using decorater and function based api--------------------------------------
-@csrf_exempt   
+@csrf_exempt
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+  
 def  task_list(request):
     """
     This method  returns a list of all the tasks in the database.
