@@ -18,8 +18,6 @@ class SignUp(APIView):
 
 @api_view(["POST"])
 def postapi(request):
-    print(request.data["username"])
-    print(request.data["password"])
     user = authenticate(username =request.data["username"], password = request.data["password"] )
     print(user)
     if user:

@@ -2,7 +2,7 @@ from django.contrib import admin
 from todo.models import Task
 from user.models import User
 # from geospatial.models import GeoSpatialData
-from geospatial.models import GeoSpatialData
+from geospatial.models import GeoSpatialData, PalikaUpload, PalikaGeometry
 # from geospatial.models import GeoSpatialDataTranslate
 # from modeltranslation.translator import TranslationOptions, register
 
@@ -17,7 +17,13 @@ class UserAuthAdmin(admin.ModelAdmin):
     list_display=['id', 'username', 'password']    
 
 class GeoSpatialDataAdmin(admin.ModelAdmin):
-    list_display=['user', 'name', 'description', 'file_type', 'upload_date', 'data_file']
+    list_display=['user', 'username','geom', 'palika_name', 'description', 'file_type', 'upload_date', 'data_file']
+    
+class PalikaUploadAdmin(admin.ModelAdmin):
+    list_display=['data_file', 'upload_date']
+    
+class PalikaGeometryAdmin(admin.ModelAdmin):
+    list_display=['user', 'username','geom', 'palika_name', 'description', 'file_type', 'upload_date']
     
 # class GeoSpatialDataTranslateAdmin(admin.ModelAdmin):
 #     # list_display=['name', 'description']
@@ -26,6 +32,8 @@ class GeoSpatialDataAdmin(admin.ModelAdmin):
 admin.site.register(Task, TaskAdmin)
 admin.site.register(User, UserAuthAdmin)
 admin.site.register(GeoSpatialData, GeoSpatialDataAdmin)
+admin.site.register(PalikaUpload, PalikaUploadAdmin)
+admin.site.register(PalikaGeometry, PalikaGeometryAdmin)
 # admin.site.register( GeoSpatialDataTranslate, GeoSpatialDataTranslateAdmin)
 
     
