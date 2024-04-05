@@ -15,7 +15,6 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import permission_classes, authentication_classes
 
 
@@ -81,7 +80,7 @@ class TodoViewSet(viewsets.ModelViewSet):
     
     
     #------------------------------using decorater and function based api--------------------------------------
-@csrf_exempt
+@api_view(['GET'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
   
@@ -133,16 +132,21 @@ def task_detail(request,pk):
         task.delete()
         return HttpResponse(status=204)
     
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])    
 @api_view(['GET'])
 def todo_details(request): 
     '''
     This function  is used to get all the tasks of user which is based in category.
     '''
+    
     category_name=request.query_params.get("category", None)
+    print('#'*20, category_name)
     paginator=MyPagination()
     if category_name:
         try:
             task=Task.objects.filter(category=category_name)
+            print('#'*20, task.count())
             result_page=paginator.paginate_queryset(task,request)
             serializer =TaskSerializer(result_page,many=True)
             return paginator.get_paginated_response(serializer.data)
@@ -171,7 +175,10 @@ class TodoDetails(APIView):
     This class  is used to handle HTTP GET requests
 
     """
+    authentication_classes=[TokenAuthentication] 
+    permission_classes=[IsAuthenticated]
     def get(self, request):
+        
         category_name=request.query_params.get('category',None)
         paginator=MyPagination()
         if category_name:
