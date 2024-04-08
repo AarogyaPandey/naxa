@@ -4,9 +4,9 @@ from geospatial.views import GeoSpatial, Geom
 
 
 router=DefaultRouter()
+router.register(r'geos',GeoSpatial)
 urlpatterns = [
     path('', include(router.urls)),
-    path('geospatial/', GeoSpatial.as_view({'get': 'list'}), name='geospatial'),
     path('postgeom/', Geom.as_view(), name='postgeom'),
     
 ]
