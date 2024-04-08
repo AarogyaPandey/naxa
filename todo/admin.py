@@ -23,7 +23,7 @@ class PalikaUploadAdmin(admin.ModelAdmin):
     list_display=['data_file', 'upload_date']
     
 class PalikaGeometryAdmin(admin.ModelAdmin):
-    list_display=['user', 'username','geom', 'palika_name', 'description', 'file_type', 'upload_date']
+    list_display=['palikaupload', 'palika_name', 'description', 'upload_date']
     
 # class GeoSpatialDataTranslateAdmin(admin.ModelAdmin):
 #     # list_display=['name', 'description']

@@ -83,7 +83,6 @@ class TodoViewSet(viewsets.ModelViewSet):
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
-  
 def  task_list(request):
     """
     This method  returns a list of all the tasks in the database.
@@ -131,6 +130,9 @@ def task_detail(request,pk):
     elif request.method=='DELETE':
         task.delete()
         return HttpResponse(status=204)
+
+
+# logger
     
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])    
@@ -139,20 +141,16 @@ def todo_details(request):
     '''
     This function  is used to get all the tasks of user which is based in category.
     '''
-    
     category_name=request.query_params.get("category", None)
-    print('#'*20, category_name)
     paginator=MyPagination()
     if category_name:
         try:
             task=Task.objects.filter(category=category_name)
-            print('#'*20, task.count())
             result_page=paginator.paginate_queryset(task,request)
             serializer =TaskSerializer(result_page,many=True)
             return paginator.get_paginated_response(serializer.data)
         except Exception  as e :
             return Response(f"Error: {str(e)}", status=404)
-    
     else:
         return Response("category_name is required", status=400)
 
@@ -178,7 +176,6 @@ class TodoDetails(APIView):
     authentication_classes=[TokenAuthentication] 
     permission_classes=[IsAuthenticated]
     def get(self, request):
-        
         category_name=request.query_params.get('category',None)
         paginator=MyPagination()
         if category_name:
@@ -199,7 +196,7 @@ class TodoPost(APIView):
     This class  is used to handle HTTP POST. It validates data and save it into database.
     '''
     def post(self,request,pk):
-        task = Task.objects.filter(id=pk)
+        task = Task.objects.filter(id=pk)  
         if not task:
             return Response({"error":"Invalid ID"},status=404)
         else:
