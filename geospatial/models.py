@@ -35,7 +35,7 @@ class PalikaGeometry(models.Model):
     description=models.TextField(max_length=1000, blank=True, null=True)
     upload_date=models.DateTimeField(auto_now_add=True, null=True,  blank=True)
     district=models.CharField(max_length=100, blank =True, null=True)
-    state=models.CharField(max_length=100, blank=True, null=True)
+    ward_number=models.CharField(max_length=100, blank=True, null=True)
     area=models.FloatField(null=True, blank=True)
     bbox_area=models.FloatField(null=True, blank=True)
     bbox=models.CharField(max_length=200, blank=True, null=True)
