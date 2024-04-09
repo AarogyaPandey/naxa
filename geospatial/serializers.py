@@ -1,13 +1,22 @@
 from rest_framework import serializers
-from geospatial.models import GeoSpatialData, PalikaGeometry, PalikaUpload
+from geospatial.models import GeoSpatialData, PalikaGeometry, PalikaUpload, JsonGeometry
 
 class  GeoSerializer(serializers.ModelSerializer):
     class Meta:
         model = GeoSpatialData
-        # fields = ('id', 'username', 'palika_name', 'geom',  'file_type', 'description', 'data_file', 'upload_date')
         fields = '__all__'
-        # exclude_fields =
-        model=PalikaGeometry
-        fields=('palikaupload', 'palika_name', 'geom', 'description', 'upload_date')
-        model=PalikaUpload
-        fields=('data_file', 'upload_date')
+        
+class  UploadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model= PalikaUpload
+        fields='__all__'
+    
+class PalikaGeometrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model=  PalikaGeometry
+        fields='__all__'
+        
+class JsonGeometrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model= JsonGeometry
+        fields='__all__'
