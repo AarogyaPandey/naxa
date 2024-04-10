@@ -25,3 +25,8 @@ class JsonGeometrySerializer(serializers.ModelSerializer):
     class Meta:
         model= JsonGeometry
         fields='__all__'  
+        
+class BankGeometrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model= BankGeometry
+        fields='__all__'

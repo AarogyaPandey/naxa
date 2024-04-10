@@ -29,7 +29,7 @@ class JsonGeometryAdmin(admin.ModelAdmin):
     list_display=['palikaupload', 'palika_name', 'description', 'upload_date']
     
 class BankGeometryAdmin(admin.ModelAdmin):
-    list_display=['name_ne', 'name_en', 'amenity', 'timestamp']
+    list_display=['name_ne', 'name_en', 'amenity']
 
 
 admin.site.register(Task, TaskAdmin)

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from geospatial.models import GeoSpatialData, PalikaGeometry, PalikaUpload, JsonGeometry
-from geospatial.serializers import  GeoSerializer, PalikaGeometrySerializer,  UploadSerializer, JsonGeometrySerializer
+from geospatial.models import GeoSpatialData, PalikaGeometry, PalikaUpload, JsonGeometry, BankGeometry
+from geospatial.serializers import  GeoSerializer, PalikaGeometrySerializer,  UploadSerializer, JsonGeometrySerializer, BankGeometrySerializer
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import  APIView
@@ -12,6 +12,8 @@ import json
 from django.core.serializers.json import Serializer
 from django.core.serializers import serialize
 from django.http import HttpResponse
+import os
+import zipfile
 # from rest_framework.decorators import permission_classes, authentication_classes
 
 class GeoSpatial(viewsets.ModelViewSet):
@@ -32,6 +34,7 @@ class GeoSpatial(viewsets.ModelViewSet):
 class Geom(APIView):
     authentication_classes=[TokenAuthentication] 
     permission_classes=[IsAuthenticated]
+    #================================================Correct Code================================================ 
     
     def post(self, request):
         try:
@@ -82,14 +85,21 @@ class Geom(APIView):
                     bbox_width=bbox[2]-bbox[0]  
                     bbox_height=bbox[3]-bbox[1]
                     bbox_area=bbox_width*bbox_height*111.32*111.32
-                    JsonGeometry.objects.create(geom=geom,palikaupload=obj, palika_name=palika_name, description=description, area=area,ward_number=ward_number,district=district, bbox_area=bbox_area, bbox=bbox, extra_json=attr_data, user=request.user)
+                    
+                    JsonGeometry.objects.create(geom=geom,palikaupload=obj, 
+                                                palika_name=palika_name, description=description, 
+                                                area=area,ward_number=ward_number,district=district, 
+                                                bbox_area=bbox_area, bbox=bbox, extra_json=attr_data, 
+                                                user=request.user)
+                    
                 return Response('Successful Upload of GeoJson!')
                                         
             else:
                 return Response('No shapefile provided')
         except Exception as e:
             return Response(f'Error uploading shapefile: {str(e)}')
-        
+    # ============================================================Until here==========================================================================================
+    
 class GetApi(APIView):
     def get(self, request):
         task=PalikaGeometry.objects.all()
@@ -110,6 +120,43 @@ class JsonResponseShp(APIView):
         data=serialize('geojson',query, geometry_field="geom")
         data=json.loads(data)
         return Response(data, content_type='application/json')
+    
+class BankGet(APIView):
+    def get(self, request):
+        query=BankGeometry.objects.all()
+        data=serialize('geojson', query, geometry_field="geom")
+        data=json.loads(data)
+        return Response(data, content_type='application/json')
+    
+class BankPost(APIView):
+    def post(self, request):
+        try:
+            file=request.data.get('file')
+            file_type=request.data.get('file_type')
+            
+            if not file_type:
+                return Response("File type is required")
+            serializer=UploadSerializer(data=request.data)
+            
+            if serializer.is_valid():
+                obj=serializer.save()
+                
+            if file_type=='geojson':
+                gdf=gpd.read_file(file)
+                for index, row in gdf.iterrows():
+                    geom=GEOSGeometry(str(row['geometry']))
+                    # attr_data=row.drop(['geometry']).to_dict()
+                    amenity=row["amenity"]
+                    name_en=row["name:en"]
+                    name_ne=row["name:ne"]
+                    BankGeometry.objects.create(geom=geom, palikaupload=obj,amenity=amenity, 
+                                                name_en=name_en, name_ne=name_ne) 
+                    
+                return Response('Successful GeoJson Upload!')
+            else:
+                return Response('No GeoJson file provided')
+        except Exception as e:
+            return Response(f"Error uploading file: {str(e)}")
     
     
 

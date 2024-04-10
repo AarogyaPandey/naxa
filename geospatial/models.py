@@ -64,22 +64,11 @@ class BankGeometry(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     name_ne=models.CharField(max_length=100, blank=True, null=True)
     name_en=models.CharField(max_length=100, blank=True, null=True)
+    palikaupload=models.ForeignKey(PalikaUpload, on_delete=models.CASCADE, blank=True, null=True)
     geom= gismd.GeometryField(srid=4326, null=True, blank=True)
     amenity=models.CharField(max_length=100, blank=True, null=True)
     wheelchair=models.CharField(max_length=100, blank=True, null=True)
-    timestamp=models.CharField(max_length=100, blank=True, null=True)
     extra_json=models.JSONField(null=True, blank=True)
     
-    
-    
-    
-    
-    
-    
-    
 
-    
-    
-# class GeoSpatialDataTranslate(TranslationOptions):
-#     fields=('description', 'name')
 
