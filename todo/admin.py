@@ -2,7 +2,7 @@ from django.contrib import admin
 from todo.models import Task
 from user.models import User
 # from geospatial.models import GeoSpatialData
-from geospatial.models import GeoSpatialData, PalikaUpload, PalikaGeometry, JsonGeometry
+from geospatial.models import GeoSpatialData, PalikaUpload, PalikaGeometry, JsonGeometry, BankGeometry
 # from geospatial.models import GeoSpatialDataTranslate
 # from modeltranslation.translator import TranslationOptions, register
 
@@ -27,9 +27,10 @@ class PalikaGeometryAdmin(admin.ModelAdmin):
     
 class JsonGeometryAdmin(admin.ModelAdmin):
     list_display=['palikaupload', 'palika_name', 'description', 'upload_date']
-# class GeoSpatialDataTranslateAdmin(admin.ModelAdmin):
-#     # list_display=['name', 'description']
-#     pass
+    
+class BankGeometryAdmin(admin.ModelAdmin):
+    list_display=['name_ne', 'name_en', 'amenity', 'timestamp']
+
 
 admin.site.register(Task, TaskAdmin)
 admin.site.register(User, UserAuthAdmin)
@@ -37,7 +38,7 @@ admin.site.register(GeoSpatialData, GeoSpatialDataAdmin)
 admin.site.register(PalikaUpload, PalikaUploadAdmin)
 admin.site.register(PalikaGeometry, PalikaGeometryAdmin)
 admin.site.register(JsonGeometry, JsonGeometryAdmin)
-# admin.site.register( GeoSpatialDataTranslate, GeoSpatialDataTranslateAdmin)
+admin.site.register(BankGeometry, BankGeometryAdmin)
 
     
 admin.site.site_header = "Todo List Panel"

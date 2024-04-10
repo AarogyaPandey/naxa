@@ -104,11 +104,12 @@ class JsonResponse(APIView):
         data=json.loads(data)
         return Response(data, content_type='application/json')
     
-class GetApiJson(APIView):
+class JsonResponseShp(APIView):
     def get(self, request):
-        task=JsonGeometry.objects.all()
-        serializer=JsonGeometrySerializer(task, many=True)
-        return Response(serializer.data, content_type='application/json', status=200)
+        query=PalikaGeometry.objects.all()
+        data=serialize('geojson',query, geometry_field="geom")
+        data=json.loads(data)
+        return Response(data, content_type='application/json')
     
     
 
