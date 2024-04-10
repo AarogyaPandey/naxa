@@ -47,7 +47,7 @@ class JsonGeometry(models.Model):
     ('geojson', "GeoJSON")
 ]
     user=models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
-    file_type=models.CharField(max_length=100, choices=file_type_choices, blank=True, null=True, default=('shapefile'))
+    file_type=models.CharField(max_length=100, choices=file_type_choices, blank=True, null=True, default=('geojson'))
     geom= gismd.GeometryField(srid=4326, null=True, blank=True)
     palikaupload=models.ForeignKey(PalikaUpload, on_delete=models.CASCADE, blank=True, null=True)
     description=models.TextField(max_length=1000, blank=True, null=True)
