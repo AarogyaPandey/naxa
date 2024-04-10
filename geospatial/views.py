@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from geospatial.models import GeoSpatialData, PalikaGeometry, PalikaUpload, JsonGeometry
-from geospatial.serializers import  GeoSerializer, PalikaGeometrySerializer,  UploadSerializer
+from geospatial.serializers import  GeoSerializer, PalikaGeometrySerializer,  UploadSerializer, JsonGeometrySerializer
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import  APIView
@@ -9,6 +9,9 @@ from rest_framework.response import Response
 from geopandas import geopandas  as gpd
 from django.contrib.gis.geos import GEOSGeometry
 import json
+from django.core.serializers.json import Serializer
+from django.core.serializers import serialize
+from django.http import HttpResponse
 # from rest_framework.decorators import permission_classes, authentication_classes
 
 class GeoSpatial(viewsets.ModelViewSet):
@@ -64,6 +67,7 @@ class Geom(APIView):
                 return Response('Shapefile uploaded successfully')
             elif file_type=="geojson":
                 gdf=gpd.read_file(file)
+                print(gdf)
                 for index, row in gdf.iterrows():
                     geom = GEOSGeometry(str(row['geometry']))
                     attr_data=row.drop(["geometry"]).to_dict()
@@ -86,6 +90,25 @@ class Geom(APIView):
         except Exception as e:
             return Response(f'Error uploading shapefile: {str(e)}')
         
+class GetApi(APIView):
+    def get(self, request):
+        task=PalikaGeometry.objects.all()
+        serializer=PalikaGeometrySerializer(task, many=True)
+        obj=serializer.data
+        return Response(obj, content_type='application/json', status=200)
 
-                      
+class JsonResponse(APIView):
+    def get(self, request):
+        query=JsonGeometry.objects.all()
+        data=serialize('geojson',query, geometry_field="geom")
+        data=json.loads(data)
+        return Response(data, content_type='application/json')
+    
+class GetApiJson(APIView):
+    def get(self, request):
+        task=JsonGeometry.objects.all()
+        serializer=JsonGeometrySerializer(task, many=True)
+        return Response(serializer.data, content_type='application/json', status=200)
+    
+    
 
