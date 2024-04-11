@@ -12,13 +12,13 @@ class  GeoSpatialData(models.Model):
     description=models.TextField(max_length=1000, blank=True, null=True)
     file_type=models.CharField(max_length=100, blank=True, null=True) 
     upload_date=models.DateTimeField(auto_now_add=True, null=True,  blank=True)
-    data_file=models.FileField(upload_to= 'geospatialdata/', blank=True, null=True)
+    data_file=models.FileField(upload_to= 'geospatialdata', blank=True, null=True)
     
     def __str__(self):
         return self.username
     
 class PalikaUpload(models.Model):
-    data_file=models.FileField(upload_to= 'geospatialdata/' ,blank=True, null=True)
+    data_file=models.FileField(upload_to= 'geospatialdata' ,blank=True, null=True)
     upload_date=models.DateTimeField(auto_now_add=True, null=True,  blank=True)
     
     
@@ -66,6 +66,7 @@ class BankGeometry(models.Model):
     name_en=models.CharField(max_length=100, blank=True, null=True)
     palikaupload=models.ForeignKey(PalikaUpload, on_delete=models.CASCADE, blank=True, null=True)
     geom= gismd.GeometryField(srid=4326, null=True, blank=True)
+    timestamp=models.CharField(max_length=100, null=True, blank=True)
     amenity=models.CharField(max_length=100, blank=True, null=True)
     wheelchair=models.CharField(max_length=100, blank=True, null=True)
     extra_json=models.JSONField(null=True, blank=True)
