@@ -13,6 +13,7 @@ from django.core.serializers import serialize
 from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
+from geospatial.geojsonapi import processapi
 
 class GeoSpatial(viewsets.ModelViewSet):
     queryset= GeoSpatialData.objects.all()
@@ -27,7 +28,8 @@ class GeoSpatial(viewsets.ModelViewSet):
         else:
             self.queryset=GeoSpatialData.objects.all()
         return super().create(request, *args, **kwargs)   
-    
+  
+  
 class Geom(APIView):
     authentication_classes=[TokenAuthentication] 
     permission_classes=[IsAuthenticated]
@@ -43,11 +45,10 @@ class Geom(APIView):
             serializer=UploadSerializer(data=request.data)
             if serializer.is_valid():
                 obj=serializer.save()
+                print("this is the object", obj.id)
                 
             if file_type=="shapefile":
                 gdf = gpd.read_file(obj.data_file.path)
-                print(gdf, "is gdf")
-                
                 for index, row in gdf.iterrows():
                     geom = GEOSGeometry(str(row['geometry']))
                     attr_data= row.drop(['geometry']).to_dict()
@@ -67,35 +68,11 @@ class Geom(APIView):
                                                   area=area,ward_number=ward_number,
                                                   district=district, bbox_area=bbox_area,
                                                   bbox=bbox, extra_json=attr_data, user=request.user)
-                    
                 return Response('Shapefile uploaded successfully')
-            elif file_type=="geojson":
-                gdf=gpd.read_file(file)
-                print(gdf)
-                for index, row in gdf.iterrows():
-                    geom = GEOSGeometry(str(row['geometry']))
-                    attr_data=row.drop(["geometry"]).to_dict()
-                    ward_number= attr_data.pop("NEW_WARD_N")
-                    description=attr_data.pop("CENTER")
-                    district=attr_data.pop("DISTRICT")
-                    palika_name=attr_data.pop("dname")
-                    area_gdf = gpd.GeoDataFrame(geometry=[row["geometry"]], crs=gdf.crs)
-                    area_gdf.to_crs(epsg=3857, inplace=True)
-                    area = area_gdf.area.iloc[0] / 1000000
-                    bbox=geom.extent
-                    bbox_width=bbox[2]-bbox[0]  
-                    bbox_height=bbox[3]-bbox[1]
-                    bbox_area=bbox_width*bbox_height*111.32*111.32
-                    
-                    JsonGeometry.objects.create(geom=geom,palikaupload=obj, 
-                                                palika_name=palika_name, description=description, 
-                                                area=area,ward_number=ward_number,district=district, 
-                                                bbox_area=bbox_area, bbox=bbox, extra_json=attr_data, 
-                                                user=request.user)
-                    
-                return Response('Successful Upload of GeoJson!')
-            else:
-                return Response('No shapefile provided')
+            elif file_type=="geojson": 
+                print("is geo json") 
+                processapi(obj.data_file.path,request.user.id,obj.id)
+                return Response("The data is being uploaded...")                          
         except Exception as e:
             return Response(f'Error uploading shapefile: {str(e)}')
         
@@ -165,6 +142,22 @@ def download(request):
     response = HttpResponse(geojson_data, content_type='application/json')
     response['Content-Disposition'] = 'attachment; filename="data.geojson"'
     return response
+
+@api_view(['GET'])
+def palikafilter(request):
+    ward_no=request.query_params.get('ward' ,None)
+    if ward_no:
+        query=PalikaGeometry.objects.filter(ward_number=ward_no)
+        serializer=PalikaGeometrySerializer(query, many=True)
+        return Response(serializer.data)
+    else:
+        return Response("ward number is required", status=400)
+
+
+
+
+
+
 
         
     

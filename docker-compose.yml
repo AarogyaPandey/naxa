@@ -28,6 +28,34 @@ services:
     ports:
       - 5433:5432
 
+  redis:
+    image: redis:alpine
+    restart: always
+    entrypoint: redis-server --appendonly yes
+    volumes:
+      - ./_redis_data:/var/lib/redis
+      - ./redis/rc.local:/etc/rc.local
+    networks:
+    - task-network
+
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    entrypoint: "celery -A todo_list worker -f /logs/worker.logs -l DEBUG"
+    depends_on:
+      - web
+      - redis
+    volumes:
+      - .:/code
+      - ./logs/:/logs/    
+    env_file:
+      - .env
+    networks:
+    - task-network
+
 networks:
   task-network:
     driver: bridge
