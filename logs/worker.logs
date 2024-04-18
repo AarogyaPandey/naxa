@@ -3306,3 +3306,1016 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.9/json/encoder.py", line 179, in default
     raise TypeError(f'Object of type {o.__class__.__name__} '
 kombu.exceptions.EncodeError: Object of type Response is not JSON serializable
+[2024-04-18 11:49:22,550: INFO/MainProcess] Task geospatial.geojsonapi.processapi[83e262fe-fb87-4b29-9da0-9638c004cbe5] received
+[2024-04-18 11:49:22,551: DEBUG/MainProcess] TaskPool: Apply <function fast_trace_task at 0x7fac37ae8e50> (args:('geospatial.geojsonapi.processapi', '83e262fe-fb87-4b29-9da0-9638c004cbe5', {'lang': 'py', 'task': 'geospatial.geojsonapi.processapi', 'id': '83e262fe-fb87-4b29-9da0-9638c004cbe5', 'shadow': None, 'eta': None, 'expires': None, 'group': None, 'group_index': None, 'retries': 0, 'timelimit': [None, None], 'root_id': '83e262fe-fb87-4b29-9da0-9638c004cbe5', 'parent_id': None, 'argsrepr': "('/code/media/geospatialdata/mygeodata_1_m4BV9US.zip', 14)", 'kwargsrepr': '{}', 'origin': 'gen198@7f9f0e1a74be', 'ignore_result': False, 'properties': {'correlation_id': '83e262fe-fb87-4b29-9da0-9638c004cbe5', 'reply_to': '7f8e0a34-0e6a-313a-b991-ba1dfdecf3f7', 'delivery_mode': 2, 'delivery_info': {'exchange': '', 'routing_key': 'celery'}, 'priority': 0, 'body_encoding': 'base64', 'delivery_tag': '228d78f3-8b48-4aae-9551-36e99468bcb0'}, 'reply_to': '7f8e0a34-0e6a-313a-b991-ba1dfdecf3f7', 'correlation_id': '83e262fe-fb87-4b29-9da0-9638c004cbe5', 'hostname': 'celery@e8ecd66153a6', 'delivery_info': {'exchange': '', 'routing_key':... kwargs:{})
+[2024-04-18 11:49:22,570: WARNING/ForkPoolWorker-15] file path: /code/media/geospatialdata/mygeodata_1_m4BV9US.zip
+[2024-04-18 11:49:22,571: DEBUG/ForkPoolWorker-15] Entering env context: <fiona.env.Env object at 0x7fac1a1dce80>
+[2024-04-18 11:49:22,571: DEBUG/ForkPoolWorker-15] Starting outermost env
+[2024-04-18 11:49:22,571: DEBUG/ForkPoolWorker-15] No GDAL environment exists
+[2024-04-18 11:49:22,572: DEBUG/ForkPoolWorker-15] New GDAL environment <fiona._env.GDALEnv object at 0x7fac1a11dc70> created
+[2024-04-18 11:49:22,574: DEBUG/ForkPoolWorker-15] GDAL data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/gdal_data'.
+[2024-04-18 11:49:22,574: DEBUG/ForkPoolWorker-15] PROJ data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/proj_data'.
+[2024-04-18 11:49:22,575: DEBUG/ForkPoolWorker-15] Started GDALEnv: self=<fiona._env.GDALEnv object at 0x7fac1a11dc70>.
+[2024-04-18 11:49:22,575: DEBUG/ForkPoolWorker-15] Updated existing <fiona._env.GDALEnv object at 0x7fac1a11dc70> with options {}
+[2024-04-18 11:49:22,575: DEBUG/ForkPoolWorker-15] Entered env context: <fiona.env.Env object at 0x7fac1a1dce80>
+[2024-04-18 11:49:22,592: DEBUG/ForkPoolWorker-15] Got coordinate system
+[2024-04-18 11:49:22,593: DEBUG/ForkPoolWorker-15] OLC_FASTSETNEXTBYINDEX: 1
+[2024-04-18 11:49:22,593: DEBUG/ForkPoolWorker-15] OLC_FASTFEATURECOUNT: 1
+[2024-04-18 11:49:22,593: DEBUG/ForkPoolWorker-15] Next index: 0
+[2024-04-18 11:49:22,593: DEBUG/ForkPoolWorker-15] Next index: 1
+[2024-04-18 11:49:22,596: DEBUG/ForkPoolWorker-15] Next index: 2
+[2024-04-18 11:49:22,596: DEBUG/ForkPoolWorker-15] Next index: 3
+[2024-04-18 11:49:22,597: DEBUG/ForkPoolWorker-15] Next index: 4
+[2024-04-18 11:49:22,597: DEBUG/ForkPoolWorker-15] Next index: 5
+[2024-04-18 11:49:22,597: DEBUG/ForkPoolWorker-15] Next index: 6
+[2024-04-18 11:49:22,601: DEBUG/ForkPoolWorker-15] Next index: 7
+[2024-04-18 11:49:22,602: DEBUG/ForkPoolWorker-15] Next index: 8
+[2024-04-18 11:49:22,603: DEBUG/ForkPoolWorker-15] Next index: 9
+[2024-04-18 11:49:22,603: DEBUG/ForkPoolWorker-15] Next index: 10
+[2024-04-18 11:49:22,603: DEBUG/ForkPoolWorker-15] Next index: 11
+[2024-04-18 11:49:22,603: DEBUG/ForkPoolWorker-15] Next index: 12
+[2024-04-18 11:49:22,604: DEBUG/ForkPoolWorker-15] Next index: 13
+[2024-04-18 11:49:22,604: DEBUG/ForkPoolWorker-15] Next index: 14
+[2024-04-18 11:49:22,604: DEBUG/ForkPoolWorker-15] Next index: 15
+[2024-04-18 11:49:22,604: DEBUG/ForkPoolWorker-15] Next index: 16
+[2024-04-18 11:49:22,605: DEBUG/ForkPoolWorker-15] Next index: 17
+[2024-04-18 11:49:22,608: DEBUG/ForkPoolWorker-15] Next index: 18
+[2024-04-18 11:49:22,608: DEBUG/ForkPoolWorker-15] Next index: 19
+[2024-04-18 11:49:22,608: DEBUG/ForkPoolWorker-15] Next index: 20
+[2024-04-18 11:49:22,608: DEBUG/ForkPoolWorker-15] Next index: 21
+[2024-04-18 11:49:22,609: DEBUG/ForkPoolWorker-15] Next index: 22
+[2024-04-18 11:49:22,609: DEBUG/ForkPoolWorker-15] Next index: 23
+[2024-04-18 11:49:22,609: DEBUG/ForkPoolWorker-15] Next index: 24
+[2024-04-18 11:49:22,612: DEBUG/ForkPoolWorker-15] Next index: 25
+[2024-04-18 11:49:22,613: DEBUG/ForkPoolWorker-15] Next index: 26
+[2024-04-18 11:49:22,613: DEBUG/ForkPoolWorker-15] Next index: 27
+[2024-04-18 11:49:22,613: DEBUG/ForkPoolWorker-15] Next index: 28
+[2024-04-18 11:49:22,617: DEBUG/ForkPoolWorker-15] Next index: 29
+[2024-04-18 11:49:22,618: DEBUG/ForkPoolWorker-15] Next index: 30
+[2024-04-18 11:49:22,618: DEBUG/ForkPoolWorker-15] Next index: 31
+[2024-04-18 11:49:22,619: DEBUG/ForkPoolWorker-15] Next index: 32
+[2024-04-18 11:49:22,632: DEBUG/ForkPoolWorker-15] Flushed buffer
+[2024-04-18 11:49:22,633: DEBUG/ForkPoolWorker-15] Stopped session
+[2024-04-18 11:49:22,633: DEBUG/ForkPoolWorker-15] Exiting env context: <fiona.env.Env object at 0x7fac1a1dce80>
+[2024-04-18 11:49:22,633: DEBUG/ForkPoolWorker-15] Cleared existing <fiona._env.GDALEnv object at 0x7fac1a11dc70> options
+[2024-04-18 11:49:22,634: DEBUG/ForkPoolWorker-15] Stopping GDALEnv <fiona._env.GDALEnv object at 0x7fac1a11dc70>.
+[2024-04-18 11:49:22,634: DEBUG/ForkPoolWorker-15] Error handler popped.
+[2024-04-18 11:49:22,634: DEBUG/ForkPoolWorker-15] Stopped GDALEnv <fiona._env.GDALEnv object at 0x7fac1a11dc70>.
+[2024-04-18 11:49:22,634: DEBUG/ForkPoolWorker-15] Exiting outermost env
+[2024-04-18 11:49:22,634: DEBUG/ForkPoolWorker-15] Exited env context: <fiona.env.Env object at 0x7fac1a1dce80>
+[2024-04-18 11:49:22,634: WARNING/ForkPoolWorker-15] check check
+[2024-04-18 11:49:23,268: ERROR/ForkPoolWorker-15] Task geospatial.geojsonapi.processapi[83e262fe-fb87-4b29-9da0-9638c004cbe5] raised unexpected: EncodeError(TypeError('Object of type Response is not JSON serializable'))
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 39, in _reraise_errors
+    yield
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 210, in dumps
+    payload = encoder(data)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 68, in dumps
+    return _dumps(s, cls=cls or _default_encoder,
+  File "/usr/local/lib/python3.9/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/local/lib/python3.9/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 58, in default
+    return super().default(o)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Response is not JSON serializable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 518, in trace_task
+    task.backend.mark_as_done(
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 162, in mark_as_done
+    self.store_result(task_id, result, state, request=request)
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 528, in store_result
+    self._store_result(task_id, result, state, traceback,
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 962, in _store_result
+    self._set_with_state(self.get_key_for_task(task_id), self.encode(meta), state)
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 418, in encode
+    _, _, payload = self._encode(data)
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 422, in _encode
+    return dumps(data, serializer=self.serializer)
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 210, in dumps
+    payload = encoder(data)
+  File "/usr/local/lib/python3.9/contextlib.py", line 137, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 43, in _reraise_errors
+    reraise(wrapper, wrapper(exc), sys.exc_info()[2])
+  File "/usr/local/lib/python3.9/site-packages/kombu/exceptions.py", line 21, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 39, in _reraise_errors
+    yield
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 210, in dumps
+    payload = encoder(data)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 68, in dumps
+    return _dumps(s, cls=cls or _default_encoder,
+  File "/usr/local/lib/python3.9/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/local/lib/python3.9/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 58, in default
+    return super().default(o)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+kombu.exceptions.EncodeError: Object of type Response is not JSON serializable
+[2024-04-18 11:52:41,226: INFO/MainProcess] Task geospatial.geojsonapi.processapi[90a9b9fa-a790-4748-97eb-c649d9dab981] received
+[2024-04-18 11:52:41,226: DEBUG/MainProcess] TaskPool: Apply <function fast_trace_task at 0x7fac37ae8e50> (args:('geospatial.geojsonapi.processapi', '90a9b9fa-a790-4748-97eb-c649d9dab981', {'lang': 'py', 'task': 'geospatial.geojsonapi.processapi', 'id': '90a9b9fa-a790-4748-97eb-c649d9dab981', 'shadow': None, 'eta': None, 'expires': None, 'group': None, 'group_index': None, 'retries': 0, 'timelimit': [None, None], 'root_id': '90a9b9fa-a790-4748-97eb-c649d9dab981', 'parent_id': None, 'argsrepr': "('/code/media/geospatialdata/mygeodata_1_c1Dlbdm.zip', 14)", 'kwargsrepr': "{'id': 317}", 'origin': 'gen568@7f9f0e1a74be', 'ignore_result': False, 'properties': {'correlation_id': '90a9b9fa-a790-4748-97eb-c649d9dab981', 'reply_to': '865c762b-1d7a-3cfe-ae6f-b0b66918ce7d', 'delivery_mode': 2, 'delivery_info': {'exchange': '', 'routing_key': 'celery'}, 'priority': 0, 'body_encoding': 'base64', 'delivery_tag': 'd4a3a405-123d-498e-94d3-c1e31be0e52b'}, 'reply_to': '865c762b-1d7a-3cfe-ae6f-b0b66918ce7d', 'correlation_id': '90a9b9fa-a790-4748-97eb-c649d9dab981', 'hostname': 'celery@e8ecd66153a6', 'delivery_info': {'exchange': '',... kwargs:{})
+[2024-04-18 11:52:41,237: ERROR/ForkPoolWorker-15] Task geospatial.geojsonapi.processapi[90a9b9fa-a790-4748-97eb-c649d9dab981] raised unexpected: TypeError("processapi() got an unexpected keyword argument 'id'")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 451, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 734, in __protected_call__
+    return self.run(*args, **kwargs)
+TypeError: processapi() got an unexpected keyword argument 'id'
+[2024-04-18 11:53:39,300: INFO/MainProcess] Task geospatial.geojsonapi.processapi[39c2c30f-17a4-438d-a12f-0de36d48eead] received
+[2024-04-18 11:53:39,301: DEBUG/MainProcess] TaskPool: Apply <function fast_trace_task at 0x7fac37ae8e50> (args:('geospatial.geojsonapi.processapi', '39c2c30f-17a4-438d-a12f-0de36d48eead', {'lang': 'py', 'task': 'geospatial.geojsonapi.processapi', 'id': '39c2c30f-17a4-438d-a12f-0de36d48eead', 'shadow': None, 'eta': None, 'expires': None, 'group': None, 'group_index': None, 'retries': 0, 'timelimit': [None, None], 'root_id': '39c2c30f-17a4-438d-a12f-0de36d48eead', 'parent_id': None, 'argsrepr': "('/code/media/geospatialdata/mygeodata_1_vjX0dgh.zip', 14)", 'kwargsrepr': "{'id': 318}", 'origin': 'gen594@7f9f0e1a74be', 'ignore_result': False, 'properties': {'correlation_id': '39c2c30f-17a4-438d-a12f-0de36d48eead', 'reply_to': 'c217759f-71a2-3c8c-b01a-4db01635585b', 'delivery_mode': 2, 'delivery_info': {'exchange': '', 'routing_key': 'celery'}, 'priority': 0, 'body_encoding': 'base64', 'delivery_tag': '9ebc579c-74f1-41b9-88d3-4a046f225454'}, 'reply_to': 'c217759f-71a2-3c8c-b01a-4db01635585b', 'correlation_id': '39c2c30f-17a4-438d-a12f-0de36d48eead', 'hostname': 'celery@e8ecd66153a6', 'delivery_info': {'exchange': '',... kwargs:{})
+[2024-04-18 11:53:39,313: ERROR/ForkPoolWorker-15] Task geospatial.geojsonapi.processapi[39c2c30f-17a4-438d-a12f-0de36d48eead] raised unexpected: TypeError("processapi() got an unexpected keyword argument 'id'")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 451, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 734, in __protected_call__
+    return self.run(*args, **kwargs)
+TypeError: processapi() got an unexpected keyword argument 'id'
+[2024-04-18 11:55:05,969: INFO/MainProcess] Task geospatial.geojsonapi.processapi[09938c49-7ed8-45a4-94b7-ee494c66896d] received
+[2024-04-18 11:55:05,970: DEBUG/MainProcess] TaskPool: Apply <function fast_trace_task at 0x7fac37ae8e50> (args:('geospatial.geojsonapi.processapi', '09938c49-7ed8-45a4-94b7-ee494c66896d', {'lang': 'py', 'task': 'geospatial.geojsonapi.processapi', 'id': '09938c49-7ed8-45a4-94b7-ee494c66896d', 'shadow': None, 'eta': None, 'expires': None, 'group': None, 'group_index': None, 'retries': 0, 'timelimit': [None, None], 'root_id': '09938c49-7ed8-45a4-94b7-ee494c66896d', 'parent_id': None, 'argsrepr': "('/code/media/geospatialdata/mygeodata_1_ov8Vx9n.zip', 14)", 'kwargsrepr': "{'id': 319}", 'origin': 'gen594@7f9f0e1a74be', 'ignore_result': False, 'properties': {'correlation_id': '09938c49-7ed8-45a4-94b7-ee494c66896d', 'reply_to': 'c217759f-71a2-3c8c-b01a-4db01635585b', 'delivery_mode': 2, 'delivery_info': {'exchange': '', 'routing_key': 'celery'}, 'priority': 0, 'body_encoding': 'base64', 'delivery_tag': '69bed65c-1c94-44f2-b871-aeed0c717476'}, 'reply_to': 'c217759f-71a2-3c8c-b01a-4db01635585b', 'correlation_id': '09938c49-7ed8-45a4-94b7-ee494c66896d', 'hostname': 'celery@e8ecd66153a6', 'delivery_info': {'exchange': '',... kwargs:{})
+[2024-04-18 11:55:05,981: ERROR/ForkPoolWorker-15] Task geospatial.geojsonapi.processapi[09938c49-7ed8-45a4-94b7-ee494c66896d] raised unexpected: TypeError("processapi() got an unexpected keyword argument 'id'")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 451, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 734, in __protected_call__
+    return self.run(*args, **kwargs)
+TypeError: processapi() got an unexpected keyword argument 'id'
+[2024-04-18 11:55:27,746: INFO/MainProcess] Task geospatial.geojsonapi.processapi[edc70df8-c615-4bcc-bcba-c3b2a81c3053] received
+[2024-04-18 11:55:27,748: DEBUG/MainProcess] TaskPool: Apply <function fast_trace_task at 0x7fac37ae8e50> (args:('geospatial.geojsonapi.processapi', 'edc70df8-c615-4bcc-bcba-c3b2a81c3053', {'lang': 'py', 'task': 'geospatial.geojsonapi.processapi', 'id': 'edc70df8-c615-4bcc-bcba-c3b2a81c3053', 'shadow': None, 'eta': None, 'expires': None, 'group': None, 'group_index': None, 'retries': 0, 'timelimit': [None, None], 'root_id': 'edc70df8-c615-4bcc-bcba-c3b2a81c3053', 'parent_id': None, 'argsrepr': "('/code/media/geospatialdata/mygeodata_1_lHq30ge.zip', 14)", 'kwargsrepr': "{'id': 320}", 'origin': 'gen594@7f9f0e1a74be', 'ignore_result': False, 'properties': {'correlation_id': 'edc70df8-c615-4bcc-bcba-c3b2a81c3053', 'reply_to': 'c217759f-71a2-3c8c-b01a-4db01635585b', 'delivery_mode': 2, 'delivery_info': {'exchange': '', 'routing_key': 'celery'}, 'priority': 0, 'body_encoding': 'base64', 'delivery_tag': '8dd61164-5c3c-4e73-aa9f-0dc6b798cce0'}, 'reply_to': 'c217759f-71a2-3c8c-b01a-4db01635585b', 'correlation_id': 'edc70df8-c615-4bcc-bcba-c3b2a81c3053', 'hostname': 'celery@e8ecd66153a6', 'delivery_info': {'exchange': '',... kwargs:{})
+[2024-04-18 11:55:27,752: ERROR/ForkPoolWorker-15] Task geospatial.geojsonapi.processapi[edc70df8-c615-4bcc-bcba-c3b2a81c3053] raised unexpected: TypeError("processapi() got an unexpected keyword argument 'id'")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 451, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 734, in __protected_call__
+    return self.run(*args, **kwargs)
+TypeError: processapi() got an unexpected keyword argument 'id'
+[2024-04-18 11:56:07,210: INFO/MainProcess] Task geospatial.geojsonapi.processapi[990bea28-1c3b-4f08-a3a3-40df13fe8f17] received
+[2024-04-18 11:56:07,211: DEBUG/MainProcess] TaskPool: Apply <function fast_trace_task at 0x7fac37ae8e50> (args:('geospatial.geojsonapi.processapi', '990bea28-1c3b-4f08-a3a3-40df13fe8f17', {'lang': 'py', 'task': 'geospatial.geojsonapi.processapi', 'id': '990bea28-1c3b-4f08-a3a3-40df13fe8f17', 'shadow': None, 'eta': None, 'expires': None, 'group': None, 'group_index': None, 'retries': 0, 'timelimit': [None, None], 'root_id': '990bea28-1c3b-4f08-a3a3-40df13fe8f17', 'parent_id': None, 'argsrepr': "('/code/media/geospatialdata/mygeodata_1_VeicdqH.zip', 14)", 'kwargsrepr': '{}', 'origin': 'gen658@7f9f0e1a74be', 'ignore_result': False, 'properties': {'correlation_id': '990bea28-1c3b-4f08-a3a3-40df13fe8f17', 'reply_to': '60d3a0f1-e99a-3adc-b903-06a4738ccd28', 'delivery_mode': 2, 'delivery_info': {'exchange': '', 'routing_key': 'celery'}, 'priority': 0, 'body_encoding': 'base64', 'delivery_tag': '9349c728-6e5a-42c6-9486-a860f0c72dbe'}, 'reply_to': '60d3a0f1-e99a-3adc-b903-06a4738ccd28', 'correlation_id': '990bea28-1c3b-4f08-a3a3-40df13fe8f17', 'hostname': 'celery@e8ecd66153a6', 'delivery_info': {'exchange': '', 'routing_key':... kwargs:{})
+[2024-04-18 11:56:07,218: WARNING/ForkPoolWorker-15] file path: /code/media/geospatialdata/mygeodata_1_VeicdqH.zip
+[2024-04-18 11:56:07,219: DEBUG/ForkPoolWorker-15] Entering env context: <fiona.env.Env object at 0x7fac1a0b6b20>
+[2024-04-18 11:56:07,219: DEBUG/ForkPoolWorker-15] Starting outermost env
+[2024-04-18 11:56:07,220: DEBUG/ForkPoolWorker-15] No GDAL environment exists
+[2024-04-18 11:56:07,220: DEBUG/ForkPoolWorker-15] New GDAL environment <fiona._env.GDALEnv object at 0x7fac1a0b6c70> created
+[2024-04-18 11:56:07,222: DEBUG/ForkPoolWorker-15] GDAL data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/gdal_data'.
+[2024-04-18 11:56:07,223: DEBUG/ForkPoolWorker-15] PROJ data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/proj_data'.
+[2024-04-18 11:56:07,223: DEBUG/ForkPoolWorker-15] Started GDALEnv: self=<fiona._env.GDALEnv object at 0x7fac1a0b6c70>.
+[2024-04-18 11:56:07,224: DEBUG/ForkPoolWorker-15] Updated existing <fiona._env.GDALEnv object at 0x7fac1a0b6c70> with options {}
+[2024-04-18 11:56:07,224: DEBUG/ForkPoolWorker-15] Entered env context: <fiona.env.Env object at 0x7fac1a0b6b20>
+[2024-04-18 11:56:07,255: DEBUG/ForkPoolWorker-15] Got coordinate system
+[2024-04-18 11:56:07,256: DEBUG/ForkPoolWorker-15] OLC_FASTSETNEXTBYINDEX: 1
+[2024-04-18 11:56:07,257: DEBUG/ForkPoolWorker-15] OLC_FASTFEATURECOUNT: 1
+[2024-04-18 11:56:07,257: DEBUG/ForkPoolWorker-15] Next index: 0
+[2024-04-18 11:56:07,259: DEBUG/ForkPoolWorker-15] Next index: 1
+[2024-04-18 11:56:07,268: DEBUG/ForkPoolWorker-15] Next index: 2
+[2024-04-18 11:56:07,269: DEBUG/ForkPoolWorker-15] Next index: 3
+[2024-04-18 11:56:07,269: DEBUG/ForkPoolWorker-15] Next index: 4
+[2024-04-18 11:56:07,270: DEBUG/ForkPoolWorker-15] Next index: 5
+[2024-04-18 11:56:07,270: DEBUG/ForkPoolWorker-15] Next index: 6
+[2024-04-18 11:56:07,273: DEBUG/ForkPoolWorker-15] Next index: 7
+[2024-04-18 11:56:07,274: DEBUG/ForkPoolWorker-15] Next index: 8
+[2024-04-18 11:56:07,274: DEBUG/ForkPoolWorker-15] Next index: 9
+[2024-04-18 11:56:07,274: DEBUG/ForkPoolWorker-15] Next index: 10
+[2024-04-18 11:56:07,274: DEBUG/ForkPoolWorker-15] Next index: 11
+[2024-04-18 11:56:07,274: DEBUG/ForkPoolWorker-15] Next index: 12
+[2024-04-18 11:56:07,275: DEBUG/ForkPoolWorker-15] Next index: 13
+[2024-04-18 11:56:07,275: DEBUG/ForkPoolWorker-15] Next index: 14
+[2024-04-18 11:56:07,275: DEBUG/ForkPoolWorker-15] Next index: 15
+[2024-04-18 11:56:07,275: DEBUG/ForkPoolWorker-15] Next index: 16
+[2024-04-18 11:56:07,275: DEBUG/ForkPoolWorker-15] Next index: 17
+[2024-04-18 11:56:07,281: DEBUG/ForkPoolWorker-15] Next index: 18
+[2024-04-18 11:56:07,282: DEBUG/ForkPoolWorker-15] Next index: 19
+[2024-04-18 11:56:07,282: DEBUG/ForkPoolWorker-15] Next index: 20
+[2024-04-18 11:56:07,283: DEBUG/ForkPoolWorker-15] Next index: 21
+[2024-04-18 11:56:07,283: DEBUG/ForkPoolWorker-15] Next index: 22
+[2024-04-18 11:56:07,283: DEBUG/ForkPoolWorker-15] Next index: 23
+[2024-04-18 11:56:07,284: DEBUG/ForkPoolWorker-15] Next index: 24
+[2024-04-18 11:56:07,287: DEBUG/ForkPoolWorker-15] Next index: 25
+[2024-04-18 11:56:07,287: DEBUG/ForkPoolWorker-15] Next index: 26
+[2024-04-18 11:56:07,288: DEBUG/ForkPoolWorker-15] Next index: 27
+[2024-04-18 11:56:07,288: DEBUG/ForkPoolWorker-15] Next index: 28
+[2024-04-18 11:56:07,291: DEBUG/ForkPoolWorker-15] Next index: 29
+[2024-04-18 11:56:07,292: DEBUG/ForkPoolWorker-15] Next index: 30
+[2024-04-18 11:56:07,292: DEBUG/ForkPoolWorker-15] Next index: 31
+[2024-04-18 11:56:07,292: DEBUG/ForkPoolWorker-15] Next index: 32
+[2024-04-18 11:56:07,362: DEBUG/ForkPoolWorker-15] Flushed buffer
+[2024-04-18 11:56:07,363: DEBUG/ForkPoolWorker-15] Stopped session
+[2024-04-18 11:56:07,363: DEBUG/ForkPoolWorker-15] Exiting env context: <fiona.env.Env object at 0x7fac1a0b6b20>
+[2024-04-18 11:56:07,363: DEBUG/ForkPoolWorker-15] Cleared existing <fiona._env.GDALEnv object at 0x7fac1a0b6c70> options
+[2024-04-18 11:56:07,363: DEBUG/ForkPoolWorker-15] Stopping GDALEnv <fiona._env.GDALEnv object at 0x7fac1a0b6c70>.
+[2024-04-18 11:56:07,363: DEBUG/ForkPoolWorker-15] Error handler popped.
+[2024-04-18 11:56:07,363: DEBUG/ForkPoolWorker-15] Stopped GDALEnv <fiona._env.GDALEnv object at 0x7fac1a0b6c70>.
+[2024-04-18 11:56:07,363: DEBUG/ForkPoolWorker-15] Exiting outermost env
+[2024-04-18 11:56:07,363: DEBUG/ForkPoolWorker-15] Exited env context: <fiona.env.Env object at 0x7fac1a0b6b20>
+[2024-04-18 11:56:07,363: WARNING/ForkPoolWorker-15] check check
+[2024-04-18 11:56:07,996: ERROR/ForkPoolWorker-15] Task geospatial.geojsonapi.processapi[990bea28-1c3b-4f08-a3a3-40df13fe8f17] raised unexpected: EncodeError(TypeError('Object of type Response is not JSON serializable'))
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 39, in _reraise_errors
+    yield
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 210, in dumps
+    payload = encoder(data)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 68, in dumps
+    return _dumps(s, cls=cls or _default_encoder,
+  File "/usr/local/lib/python3.9/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/local/lib/python3.9/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 58, in default
+    return super().default(o)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Response is not JSON serializable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 518, in trace_task
+    task.backend.mark_as_done(
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 162, in mark_as_done
+    self.store_result(task_id, result, state, request=request)
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 528, in store_result
+    self._store_result(task_id, result, state, traceback,
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 962, in _store_result
+    self._set_with_state(self.get_key_for_task(task_id), self.encode(meta), state)
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 418, in encode
+    _, _, payload = self._encode(data)
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 422, in _encode
+    return dumps(data, serializer=self.serializer)
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 210, in dumps
+    payload = encoder(data)
+  File "/usr/local/lib/python3.9/contextlib.py", line 137, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 43, in _reraise_errors
+    reraise(wrapper, wrapper(exc), sys.exc_info()[2])
+  File "/usr/local/lib/python3.9/site-packages/kombu/exceptions.py", line 21, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 39, in _reraise_errors
+    yield
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 210, in dumps
+    payload = encoder(data)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 68, in dumps
+    return _dumps(s, cls=cls or _default_encoder,
+  File "/usr/local/lib/python3.9/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/local/lib/python3.9/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 58, in default
+    return super().default(o)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+kombu.exceptions.EncodeError: Object of type Response is not JSON serializable
+[2024-04-18 11:59:26,888: INFO/MainProcess] Task geospatial.geojsonapi.processapi[b62dff27-7821-49da-8b20-5ccfa87cb2e3] received
+[2024-04-18 11:59:26,889: DEBUG/MainProcess] TaskPool: Apply <function fast_trace_task at 0x7fac37ae8e50> (args:('geospatial.geojsonapi.processapi', 'b62dff27-7821-49da-8b20-5ccfa87cb2e3', {'lang': 'py', 'task': 'geospatial.geojsonapi.processapi', 'id': 'b62dff27-7821-49da-8b20-5ccfa87cb2e3', 'shadow': None, 'eta': None, 'expires': None, 'group': None, 'group_index': None, 'retries': 0, 'timelimit': [None, None], 'root_id': 'b62dff27-7821-49da-8b20-5ccfa87cb2e3', 'parent_id': None, 'argsrepr': "('/code/media/geospatialdata/mygeodata_1_wadrIVw.zip', 14)", 'kwargsrepr': '{}', 'origin': 'gen950@7f9f0e1a74be', 'ignore_result': False, 'properties': {'correlation_id': 'b62dff27-7821-49da-8b20-5ccfa87cb2e3', 'reply_to': 'c06a52cf-97f4-3b8a-9edd-a3532892a692', 'delivery_mode': 2, 'delivery_info': {'exchange': '', 'routing_key': 'celery'}, 'priority': 0, 'body_encoding': 'base64', 'delivery_tag': '0240eec9-3f66-431e-8296-76998d4fd4fb'}, 'reply_to': 'c06a52cf-97f4-3b8a-9edd-a3532892a692', 'correlation_id': 'b62dff27-7821-49da-8b20-5ccfa87cb2e3', 'hostname': 'celery@e8ecd66153a6', 'delivery_info': {'exchange': '', 'routing_key':... kwargs:{})
+[2024-04-18 11:59:26,893: WARNING/ForkPoolWorker-15] file path: /code/media/geospatialdata/mygeodata_1_wadrIVw.zip
+[2024-04-18 11:59:26,894: DEBUG/ForkPoolWorker-15] Entering env context: <fiona.env.Env object at 0x7fac1a0bf310>
+[2024-04-18 11:59:26,894: DEBUG/ForkPoolWorker-15] Starting outermost env
+[2024-04-18 11:59:26,894: DEBUG/ForkPoolWorker-15] No GDAL environment exists
+[2024-04-18 11:59:26,895: DEBUG/ForkPoolWorker-15] New GDAL environment <fiona._env.GDALEnv object at 0x7fac1a0bf280> created
+[2024-04-18 11:59:26,896: DEBUG/ForkPoolWorker-15] GDAL data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/gdal_data'.
+[2024-04-18 11:59:26,896: DEBUG/ForkPoolWorker-15] PROJ data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/proj_data'.
+[2024-04-18 11:59:26,897: DEBUG/ForkPoolWorker-15] Started GDALEnv: self=<fiona._env.GDALEnv object at 0x7fac1a0bf280>.
+[2024-04-18 11:59:26,897: DEBUG/ForkPoolWorker-15] Updated existing <fiona._env.GDALEnv object at 0x7fac1a0bf280> with options {}
+[2024-04-18 11:59:26,897: DEBUG/ForkPoolWorker-15] Entered env context: <fiona.env.Env object at 0x7fac1a0bf310>
+[2024-04-18 11:59:26,920: DEBUG/ForkPoolWorker-15] Got coordinate system
+[2024-04-18 11:59:26,921: DEBUG/ForkPoolWorker-15] OLC_FASTSETNEXTBYINDEX: 1
+[2024-04-18 11:59:26,921: DEBUG/ForkPoolWorker-15] OLC_FASTFEATURECOUNT: 1
+[2024-04-18 11:59:26,921: DEBUG/ForkPoolWorker-15] Next index: 0
+[2024-04-18 11:59:26,921: DEBUG/ForkPoolWorker-15] Next index: 1
+[2024-04-18 11:59:26,924: DEBUG/ForkPoolWorker-15] Next index: 2
+[2024-04-18 11:59:26,924: DEBUG/ForkPoolWorker-15] Next index: 3
+[2024-04-18 11:59:26,925: DEBUG/ForkPoolWorker-15] Next index: 4
+[2024-04-18 11:59:26,925: DEBUG/ForkPoolWorker-15] Next index: 5
+[2024-04-18 11:59:26,925: DEBUG/ForkPoolWorker-15] Next index: 6
+[2024-04-18 11:59:26,928: DEBUG/ForkPoolWorker-15] Next index: 7
+[2024-04-18 11:59:26,929: DEBUG/ForkPoolWorker-15] Next index: 8
+[2024-04-18 11:59:26,929: DEBUG/ForkPoolWorker-15] Next index: 9
+[2024-04-18 11:59:26,929: DEBUG/ForkPoolWorker-15] Next index: 10
+[2024-04-18 11:59:26,930: DEBUG/ForkPoolWorker-15] Next index: 11
+[2024-04-18 11:59:26,930: DEBUG/ForkPoolWorker-15] Next index: 12
+[2024-04-18 11:59:26,930: DEBUG/ForkPoolWorker-15] Next index: 13
+[2024-04-18 11:59:26,930: DEBUG/ForkPoolWorker-15] Next index: 14
+[2024-04-18 11:59:26,930: DEBUG/ForkPoolWorker-15] Next index: 15
+[2024-04-18 11:59:26,931: DEBUG/ForkPoolWorker-15] Next index: 16
+[2024-04-18 11:59:26,931: DEBUG/ForkPoolWorker-15] Next index: 17
+[2024-04-18 11:59:26,933: DEBUG/ForkPoolWorker-15] Next index: 18
+[2024-04-18 11:59:26,934: DEBUG/ForkPoolWorker-15] Next index: 19
+[2024-04-18 11:59:26,934: DEBUG/ForkPoolWorker-15] Next index: 20
+[2024-04-18 11:59:26,934: DEBUG/ForkPoolWorker-15] Next index: 21
+[2024-04-18 11:59:26,935: DEBUG/ForkPoolWorker-15] Next index: 22
+[2024-04-18 11:59:26,935: DEBUG/ForkPoolWorker-15] Next index: 23
+[2024-04-18 11:59:26,935: DEBUG/ForkPoolWorker-15] Next index: 24
+[2024-04-18 11:59:26,938: DEBUG/ForkPoolWorker-15] Next index: 25
+[2024-04-18 11:59:26,938: DEBUG/ForkPoolWorker-15] Next index: 26
+[2024-04-18 11:59:26,938: DEBUG/ForkPoolWorker-15] Next index: 27
+[2024-04-18 11:59:26,938: DEBUG/ForkPoolWorker-15] Next index: 28
+[2024-04-18 11:59:26,942: DEBUG/ForkPoolWorker-15] Next index: 29
+[2024-04-18 11:59:26,943: DEBUG/ForkPoolWorker-15] Next index: 30
+[2024-04-18 11:59:26,943: DEBUG/ForkPoolWorker-15] Next index: 31
+[2024-04-18 11:59:26,944: DEBUG/ForkPoolWorker-15] Next index: 32
+[2024-04-18 11:59:26,960: DEBUG/ForkPoolWorker-15] Flushed buffer
+[2024-04-18 11:59:26,961: DEBUG/ForkPoolWorker-15] Stopped session
+[2024-04-18 11:59:26,961: DEBUG/ForkPoolWorker-15] Exiting env context: <fiona.env.Env object at 0x7fac1a0bf310>
+[2024-04-18 11:59:26,961: DEBUG/ForkPoolWorker-15] Cleared existing <fiona._env.GDALEnv object at 0x7fac1a0bf280> options
+[2024-04-18 11:59:26,961: DEBUG/ForkPoolWorker-15] Stopping GDALEnv <fiona._env.GDALEnv object at 0x7fac1a0bf280>.
+[2024-04-18 11:59:26,961: DEBUG/ForkPoolWorker-15] Error handler popped.
+[2024-04-18 11:59:26,961: DEBUG/ForkPoolWorker-15] Stopped GDALEnv <fiona._env.GDALEnv object at 0x7fac1a0bf280>.
+[2024-04-18 11:59:26,961: DEBUG/ForkPoolWorker-15] Exiting outermost env
+[2024-04-18 11:59:26,961: DEBUG/ForkPoolWorker-15] Exited env context: <fiona.env.Env object at 0x7fac1a0bf310>
+[2024-04-18 11:59:26,961: WARNING/ForkPoolWorker-15] check check
+[2024-04-18 11:59:27,531: ERROR/ForkPoolWorker-15] Task geospatial.geojsonapi.processapi[b62dff27-7821-49da-8b20-5ccfa87cb2e3] raised unexpected: EncodeError(TypeError('Object of type Response is not JSON serializable'))
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 39, in _reraise_errors
+    yield
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 210, in dumps
+    payload = encoder(data)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 68, in dumps
+    return _dumps(s, cls=cls or _default_encoder,
+  File "/usr/local/lib/python3.9/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/local/lib/python3.9/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 58, in default
+    return super().default(o)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Response is not JSON serializable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 518, in trace_task
+    task.backend.mark_as_done(
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 162, in mark_as_done
+    self.store_result(task_id, result, state, request=request)
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 528, in store_result
+    self._store_result(task_id, result, state, traceback,
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 962, in _store_result
+    self._set_with_state(self.get_key_for_task(task_id), self.encode(meta), state)
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 418, in encode
+    _, _, payload = self._encode(data)
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 422, in _encode
+    return dumps(data, serializer=self.serializer)
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 210, in dumps
+    payload = encoder(data)
+  File "/usr/local/lib/python3.9/contextlib.py", line 137, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 43, in _reraise_errors
+    reraise(wrapper, wrapper(exc), sys.exc_info()[2])
+  File "/usr/local/lib/python3.9/site-packages/kombu/exceptions.py", line 21, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 39, in _reraise_errors
+    yield
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 210, in dumps
+    payload = encoder(data)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 68, in dumps
+    return _dumps(s, cls=cls or _default_encoder,
+  File "/usr/local/lib/python3.9/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/local/lib/python3.9/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 58, in default
+    return super().default(o)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+kombu.exceptions.EncodeError: Object of type Response is not JSON serializable
+[2024-04-18 11:59:47,414: INFO/MainProcess] Task geospatial.geojsonapi.processapi[4b5adba1-e87b-468c-9767-a6d3e8ab5bbe] received
+[2024-04-18 11:59:47,415: DEBUG/MainProcess] TaskPool: Apply <function fast_trace_task at 0x7fac37ae8e50> (args:('geospatial.geojsonapi.processapi', '4b5adba1-e87b-468c-9767-a6d3e8ab5bbe', {'lang': 'py', 'task': 'geospatial.geojsonapi.processapi', 'id': '4b5adba1-e87b-468c-9767-a6d3e8ab5bbe', 'shadow': None, 'eta': None, 'expires': None, 'group': None, 'group_index': None, 'retries': 0, 'timelimit': [None, None], 'root_id': '4b5adba1-e87b-468c-9767-a6d3e8ab5bbe', 'parent_id': None, 'argsrepr': "('/code/media/geospatialdata/mygeodata_1_RSTBhqu.zip', 14)", 'kwargsrepr': '{}', 'origin': 'gen950@7f9f0e1a74be', 'ignore_result': False, 'properties': {'correlation_id': '4b5adba1-e87b-468c-9767-a6d3e8ab5bbe', 'reply_to': 'c06a52cf-97f4-3b8a-9edd-a3532892a692', 'delivery_mode': 2, 'delivery_info': {'exchange': '', 'routing_key': 'celery'}, 'priority': 0, 'body_encoding': 'base64', 'delivery_tag': '65d8f5f9-c17b-48be-ab56-862eb7c9e494'}, 'reply_to': 'c06a52cf-97f4-3b8a-9edd-a3532892a692', 'correlation_id': '4b5adba1-e87b-468c-9767-a6d3e8ab5bbe', 'hostname': 'celery@e8ecd66153a6', 'delivery_info': {'exchange': '', 'routing_key':... kwargs:{})
+[2024-04-18 11:59:47,421: WARNING/ForkPoolWorker-15] file path: /code/media/geospatialdata/mygeodata_1_RSTBhqu.zip
+[2024-04-18 11:59:47,421: DEBUG/ForkPoolWorker-15] Entering env context: <fiona.env.Env object at 0x7fac1a0bfc70>
+[2024-04-18 11:59:47,422: DEBUG/ForkPoolWorker-15] Starting outermost env
+[2024-04-18 11:59:47,422: DEBUG/ForkPoolWorker-15] No GDAL environment exists
+[2024-04-18 11:59:47,422: DEBUG/ForkPoolWorker-15] New GDAL environment <fiona._env.GDALEnv object at 0x7fac1a0bfb50> created
+[2024-04-18 11:59:47,423: DEBUG/ForkPoolWorker-15] GDAL data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/gdal_data'.
+[2024-04-18 11:59:47,423: DEBUG/ForkPoolWorker-15] PROJ data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/proj_data'.
+[2024-04-18 11:59:47,423: DEBUG/ForkPoolWorker-15] Started GDALEnv: self=<fiona._env.GDALEnv object at 0x7fac1a0bfb50>.
+[2024-04-18 11:59:47,423: DEBUG/ForkPoolWorker-15] Updated existing <fiona._env.GDALEnv object at 0x7fac1a0bfb50> with options {}
+[2024-04-18 11:59:47,423: DEBUG/ForkPoolWorker-15] Entered env context: <fiona.env.Env object at 0x7fac1a0bfc70>
+[2024-04-18 11:59:47,441: DEBUG/ForkPoolWorker-15] Got coordinate system
+[2024-04-18 11:59:47,442: DEBUG/ForkPoolWorker-15] OLC_FASTSETNEXTBYINDEX: 1
+[2024-04-18 11:59:47,442: DEBUG/ForkPoolWorker-15] OLC_FASTFEATURECOUNT: 1
+[2024-04-18 11:59:47,442: DEBUG/ForkPoolWorker-15] Next index: 0
+[2024-04-18 11:59:47,442: DEBUG/ForkPoolWorker-15] Next index: 1
+[2024-04-18 11:59:47,446: DEBUG/ForkPoolWorker-15] Next index: 2
+[2024-04-18 11:59:47,447: DEBUG/ForkPoolWorker-15] Next index: 3
+[2024-04-18 11:59:47,447: DEBUG/ForkPoolWorker-15] Next index: 4
+[2024-04-18 11:59:47,448: DEBUG/ForkPoolWorker-15] Next index: 5
+[2024-04-18 11:59:47,448: DEBUG/ForkPoolWorker-15] Next index: 6
+[2024-04-18 11:59:47,451: DEBUG/ForkPoolWorker-15] Next index: 7
+[2024-04-18 11:59:47,451: DEBUG/ForkPoolWorker-15] Next index: 8
+[2024-04-18 11:59:47,451: DEBUG/ForkPoolWorker-15] Next index: 9
+[2024-04-18 11:59:47,452: DEBUG/ForkPoolWorker-15] Next index: 10
+[2024-04-18 11:59:47,452: DEBUG/ForkPoolWorker-15] Next index: 11
+[2024-04-18 11:59:47,452: DEBUG/ForkPoolWorker-15] Next index: 12
+[2024-04-18 11:59:47,452: DEBUG/ForkPoolWorker-15] Next index: 13
+[2024-04-18 11:59:47,452: DEBUG/ForkPoolWorker-15] Next index: 14
+[2024-04-18 11:59:47,452: DEBUG/ForkPoolWorker-15] Next index: 15
+[2024-04-18 11:59:47,452: DEBUG/ForkPoolWorker-15] Next index: 16
+[2024-04-18 11:59:47,453: DEBUG/ForkPoolWorker-15] Next index: 17
+[2024-04-18 11:59:47,456: DEBUG/ForkPoolWorker-15] Next index: 18
+[2024-04-18 11:59:47,456: DEBUG/ForkPoolWorker-15] Next index: 19
+[2024-04-18 11:59:47,456: DEBUG/ForkPoolWorker-15] Next index: 20
+[2024-04-18 11:59:47,456: DEBUG/ForkPoolWorker-15] Next index: 21
+[2024-04-18 11:59:47,456: DEBUG/ForkPoolWorker-15] Next index: 22
+[2024-04-18 11:59:47,457: DEBUG/ForkPoolWorker-15] Next index: 23
+[2024-04-18 11:59:47,457: DEBUG/ForkPoolWorker-15] Next index: 24
+[2024-04-18 11:59:47,460: DEBUG/ForkPoolWorker-15] Next index: 25
+[2024-04-18 11:59:47,460: DEBUG/ForkPoolWorker-15] Next index: 26
+[2024-04-18 11:59:47,460: DEBUG/ForkPoolWorker-15] Next index: 27
+[2024-04-18 11:59:47,460: DEBUG/ForkPoolWorker-15] Next index: 28
+[2024-04-18 11:59:47,466: DEBUG/ForkPoolWorker-15] Next index: 29
+[2024-04-18 11:59:47,466: DEBUG/ForkPoolWorker-15] Next index: 30
+[2024-04-18 11:59:47,467: DEBUG/ForkPoolWorker-15] Next index: 31
+[2024-04-18 11:59:47,467: DEBUG/ForkPoolWorker-15] Next index: 32
+[2024-04-18 11:59:47,478: DEBUG/ForkPoolWorker-15] Flushed buffer
+[2024-04-18 11:59:47,478: DEBUG/ForkPoolWorker-15] Stopped session
+[2024-04-18 11:59:47,478: DEBUG/ForkPoolWorker-15] Exiting env context: <fiona.env.Env object at 0x7fac1a0bfc70>
+[2024-04-18 11:59:47,478: DEBUG/ForkPoolWorker-15] Cleared existing <fiona._env.GDALEnv object at 0x7fac1a0bfb50> options
+[2024-04-18 11:59:47,478: DEBUG/ForkPoolWorker-15] Stopping GDALEnv <fiona._env.GDALEnv object at 0x7fac1a0bfb50>.
+[2024-04-18 11:59:47,478: DEBUG/ForkPoolWorker-15] Error handler popped.
+[2024-04-18 11:59:47,478: DEBUG/ForkPoolWorker-15] Stopped GDALEnv <fiona._env.GDALEnv object at 0x7fac1a0bfb50>.
+[2024-04-18 11:59:47,478: DEBUG/ForkPoolWorker-15] Exiting outermost env
+[2024-04-18 11:59:47,478: DEBUG/ForkPoolWorker-15] Exited env context: <fiona.env.Env object at 0x7fac1a0bfc70>
+[2024-04-18 11:59:47,478: WARNING/ForkPoolWorker-15] check check
+[2024-04-18 11:59:48,242: ERROR/ForkPoolWorker-15] Task geospatial.geojsonapi.processapi[4b5adba1-e87b-468c-9767-a6d3e8ab5bbe] raised unexpected: EncodeError(TypeError('Object of type Response is not JSON serializable'))
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 39, in _reraise_errors
+    yield
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 210, in dumps
+    payload = encoder(data)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 68, in dumps
+    return _dumps(s, cls=cls or _default_encoder,
+  File "/usr/local/lib/python3.9/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/local/lib/python3.9/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 58, in default
+    return super().default(o)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Response is not JSON serializable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 518, in trace_task
+    task.backend.mark_as_done(
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 162, in mark_as_done
+    self.store_result(task_id, result, state, request=request)
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 528, in store_result
+    self._store_result(task_id, result, state, traceback,
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 962, in _store_result
+    self._set_with_state(self.get_key_for_task(task_id), self.encode(meta), state)
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 418, in encode
+    _, _, payload = self._encode(data)
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 422, in _encode
+    return dumps(data, serializer=self.serializer)
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 210, in dumps
+    payload = encoder(data)
+  File "/usr/local/lib/python3.9/contextlib.py", line 137, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 43, in _reraise_errors
+    reraise(wrapper, wrapper(exc), sys.exc_info()[2])
+  File "/usr/local/lib/python3.9/site-packages/kombu/exceptions.py", line 21, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 39, in _reraise_errors
+    yield
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 210, in dumps
+    payload = encoder(data)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 68, in dumps
+    return _dumps(s, cls=cls or _default_encoder,
+  File "/usr/local/lib/python3.9/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/local/lib/python3.9/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 58, in default
+    return super().default(o)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+kombu.exceptions.EncodeError: Object of type Response is not JSON serializable
+[2024-04-18 12:03:15,561: INFO/MainProcess] Task geospatial.geojsonapi.processapi[ad59ed10-e877-49f9-bade-a963b379f010] received
+[2024-04-18 12:03:15,563: DEBUG/MainProcess] TaskPool: Apply <function fast_trace_task at 0x7fac37ae8e50> (args:('geospatial.geojsonapi.processapi', 'ad59ed10-e877-49f9-bade-a963b379f010', {'lang': 'py', 'task': 'geospatial.geojsonapi.processapi', 'id': 'ad59ed10-e877-49f9-bade-a963b379f010', 'shadow': None, 'eta': None, 'expires': None, 'group': None, 'group_index': None, 'retries': 0, 'timelimit': [None, None], 'root_id': 'ad59ed10-e877-49f9-bade-a963b379f010', 'parent_id': None, 'argsrepr': "('/code/media/geospatialdata/mygeodata_1_IAgDL55.zip', 14)", 'kwargsrepr': '{}', 'origin': 'gen1247@7f9f0e1a74be', 'ignore_result': False, 'properties': {'correlation_id': 'ad59ed10-e877-49f9-bade-a963b379f010', 'reply_to': 'f256110b-211d-3fe6-87af-7ca41f4a3011', 'delivery_mode': 2, 'delivery_info': {'exchange': '', 'routing_key': 'celery'}, 'priority': 0, 'body_encoding': 'base64', 'delivery_tag': '420ad685-32b7-4e12-9e74-701fb2f9f970'}, 'reply_to': 'f256110b-211d-3fe6-87af-7ca41f4a3011', 'correlation_id': 'ad59ed10-e877-49f9-bade-a963b379f010', 'hostname': 'celery@e8ecd66153a6', 'delivery_info': {'exchange': '',... kwargs:{})
+[2024-04-18 12:03:15,567: WARNING/ForkPoolWorker-15] file path: /code/media/geospatialdata/mygeodata_1_IAgDL55.zip
+[2024-04-18 12:03:15,569: DEBUG/ForkPoolWorker-15] Entering env context: <fiona.env.Env object at 0x7fac1a0df340>
+[2024-04-18 12:03:15,569: DEBUG/ForkPoolWorker-15] Starting outermost env
+[2024-04-18 12:03:15,569: DEBUG/ForkPoolWorker-15] No GDAL environment exists
+[2024-04-18 12:03:15,570: DEBUG/ForkPoolWorker-15] New GDAL environment <fiona._env.GDALEnv object at 0x7fac1a0df130> created
+[2024-04-18 12:03:15,573: DEBUG/ForkPoolWorker-15] GDAL data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/gdal_data'.
+[2024-04-18 12:03:15,573: DEBUG/ForkPoolWorker-15] PROJ data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/proj_data'.
+[2024-04-18 12:03:15,574: DEBUG/ForkPoolWorker-15] Started GDALEnv: self=<fiona._env.GDALEnv object at 0x7fac1a0df130>.
+[2024-04-18 12:03:15,574: DEBUG/ForkPoolWorker-15] Updated existing <fiona._env.GDALEnv object at 0x7fac1a0df130> with options {}
+[2024-04-18 12:03:15,574: DEBUG/ForkPoolWorker-15] Entered env context: <fiona.env.Env object at 0x7fac1a0df340>
+[2024-04-18 12:03:15,599: DEBUG/ForkPoolWorker-15] Got coordinate system
+[2024-04-18 12:03:15,600: DEBUG/ForkPoolWorker-15] OLC_FASTSETNEXTBYINDEX: 1
+[2024-04-18 12:03:15,601: DEBUG/ForkPoolWorker-15] OLC_FASTFEATURECOUNT: 1
+[2024-04-18 12:03:15,601: DEBUG/ForkPoolWorker-15] Next index: 0
+[2024-04-18 12:03:15,601: DEBUG/ForkPoolWorker-15] Next index: 1
+[2024-04-18 12:03:15,604: DEBUG/ForkPoolWorker-15] Next index: 2
+[2024-04-18 12:03:15,604: DEBUG/ForkPoolWorker-15] Next index: 3
+[2024-04-18 12:03:15,604: DEBUG/ForkPoolWorker-15] Next index: 4
+[2024-04-18 12:03:15,605: DEBUG/ForkPoolWorker-15] Next index: 5
+[2024-04-18 12:03:15,605: DEBUG/ForkPoolWorker-15] Next index: 6
+[2024-04-18 12:03:15,611: DEBUG/ForkPoolWorker-15] Next index: 7
+[2024-04-18 12:03:15,612: DEBUG/ForkPoolWorker-15] Next index: 8
+[2024-04-18 12:03:15,612: DEBUG/ForkPoolWorker-15] Next index: 9
+[2024-04-18 12:03:15,613: DEBUG/ForkPoolWorker-15] Next index: 10
+[2024-04-18 12:03:15,613: DEBUG/ForkPoolWorker-15] Next index: 11
+[2024-04-18 12:03:15,613: DEBUG/ForkPoolWorker-15] Next index: 12
+[2024-04-18 12:03:15,614: DEBUG/ForkPoolWorker-15] Next index: 13
+[2024-04-18 12:03:15,614: DEBUG/ForkPoolWorker-15] Next index: 14
+[2024-04-18 12:03:15,614: DEBUG/ForkPoolWorker-15] Next index: 15
+[2024-04-18 12:03:15,615: DEBUG/ForkPoolWorker-15] Next index: 16
+[2024-04-18 12:03:15,615: DEBUG/ForkPoolWorker-15] Next index: 17
+[2024-04-18 12:03:15,619: DEBUG/ForkPoolWorker-15] Next index: 18
+[2024-04-18 12:03:15,620: DEBUG/ForkPoolWorker-15] Next index: 19
+[2024-04-18 12:03:15,620: DEBUG/ForkPoolWorker-15] Next index: 20
+[2024-04-18 12:03:15,621: DEBUG/ForkPoolWorker-15] Next index: 21
+[2024-04-18 12:03:15,622: DEBUG/ForkPoolWorker-15] Next index: 22
+[2024-04-18 12:03:15,622: DEBUG/ForkPoolWorker-15] Next index: 23
+[2024-04-18 12:03:15,623: DEBUG/ForkPoolWorker-15] Next index: 24
+[2024-04-18 12:03:15,628: DEBUG/ForkPoolWorker-15] Next index: 25
+[2024-04-18 12:03:15,629: DEBUG/ForkPoolWorker-15] Next index: 26
+[2024-04-18 12:03:15,630: DEBUG/ForkPoolWorker-15] Next index: 27
+[2024-04-18 12:03:15,630: DEBUG/ForkPoolWorker-15] Next index: 28
+[2024-04-18 12:03:15,632: DEBUG/ForkPoolWorker-15] Next index: 29
+[2024-04-18 12:03:15,632: DEBUG/ForkPoolWorker-15] Next index: 30
+[2024-04-18 12:03:15,632: DEBUG/ForkPoolWorker-15] Next index: 31
+[2024-04-18 12:03:15,633: DEBUG/ForkPoolWorker-15] Next index: 32
+[2024-04-18 12:03:15,645: DEBUG/ForkPoolWorker-15] Flushed buffer
+[2024-04-18 12:03:15,646: DEBUG/ForkPoolWorker-15] Stopped session
+[2024-04-18 12:03:15,646: DEBUG/ForkPoolWorker-15] Exiting env context: <fiona.env.Env object at 0x7fac1a0df340>
+[2024-04-18 12:03:15,646: DEBUG/ForkPoolWorker-15] Cleared existing <fiona._env.GDALEnv object at 0x7fac1a0df130> options
+[2024-04-18 12:03:15,646: DEBUG/ForkPoolWorker-15] Stopping GDALEnv <fiona._env.GDALEnv object at 0x7fac1a0df130>.
+[2024-04-18 12:03:15,646: DEBUG/ForkPoolWorker-15] Error handler popped.
+[2024-04-18 12:03:15,646: DEBUG/ForkPoolWorker-15] Stopped GDALEnv <fiona._env.GDALEnv object at 0x7fac1a0df130>.
+[2024-04-18 12:03:15,647: DEBUG/ForkPoolWorker-15] Exiting outermost env
+[2024-04-18 12:03:15,647: DEBUG/ForkPoolWorker-15] Exited env context: <fiona.env.Env object at 0x7fac1a0df340>
+[2024-04-18 12:03:15,647: WARNING/ForkPoolWorker-15] check check
+[2024-04-18 12:03:16,431: ERROR/ForkPoolWorker-15] Task geospatial.geojsonapi.processapi[ad59ed10-e877-49f9-bade-a963b379f010] raised unexpected: EncodeError(TypeError('Object of type Response is not JSON serializable'))
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 39, in _reraise_errors
+    yield
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 210, in dumps
+    payload = encoder(data)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 68, in dumps
+    return _dumps(s, cls=cls or _default_encoder,
+  File "/usr/local/lib/python3.9/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/local/lib/python3.9/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 58, in default
+    return super().default(o)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Response is not JSON serializable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 518, in trace_task
+    task.backend.mark_as_done(
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 162, in mark_as_done
+    self.store_result(task_id, result, state, request=request)
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 528, in store_result
+    self._store_result(task_id, result, state, traceback,
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 962, in _store_result
+    self._set_with_state(self.get_key_for_task(task_id), self.encode(meta), state)
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 418, in encode
+    _, _, payload = self._encode(data)
+  File "/usr/local/lib/python3.9/site-packages/celery/backends/base.py", line 422, in _encode
+    return dumps(data, serializer=self.serializer)
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 210, in dumps
+    payload = encoder(data)
+  File "/usr/local/lib/python3.9/contextlib.py", line 137, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 43, in _reraise_errors
+    reraise(wrapper, wrapper(exc), sys.exc_info()[2])
+  File "/usr/local/lib/python3.9/site-packages/kombu/exceptions.py", line 21, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 39, in _reraise_errors
+    yield
+  File "/usr/local/lib/python3.9/site-packages/kombu/serialization.py", line 210, in dumps
+    payload = encoder(data)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 68, in dumps
+    return _dumps(s, cls=cls or _default_encoder,
+  File "/usr/local/lib/python3.9/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/local/lib/python3.9/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.9/site-packages/kombu/utils/json.py", line 58, in default
+    return super().default(o)
+  File "/usr/local/lib/python3.9/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+kombu.exceptions.EncodeError: Object of type Response is not JSON serializable
+[2024-04-18 12:11:45,522: DEBUG/MainProcess] | Worker: Closing Hub...
+[2024-04-18 12:11:45,522: DEBUG/MainProcess] | Worker: Closing Pool...
+[2024-04-18 12:11:45,523: DEBUG/MainProcess] | Worker: Closing Consumer...
+[2024-04-18 12:11:45,523: DEBUG/MainProcess] | Worker: Stopping Consumer...
+[2024-04-18 12:11:45,523: DEBUG/MainProcess] | Consumer: Closing Connection...
+[2024-04-18 12:11:45,523: DEBUG/MainProcess] | Consumer: Closing Events...
+[2024-04-18 12:11:45,523: DEBUG/MainProcess] | Consumer: Closing Heart...
+[2024-04-18 12:11:45,523: DEBUG/MainProcess] | Consumer: Closing Mingle...
+[2024-04-18 12:11:45,523: DEBUG/MainProcess] | Consumer: Closing Gossip...
+[2024-04-18 12:11:45,523: DEBUG/MainProcess] | Consumer: Closing Tasks...
+[2024-04-18 12:11:45,523: DEBUG/MainProcess] | Consumer: Closing Control...
+[2024-04-18 12:11:45,523: DEBUG/MainProcess] | Consumer: Closing event loop...
+[2024-04-18 12:11:45,524: DEBUG/MainProcess] | Consumer: Stopping event loop...
+[2024-04-18 12:11:45,524: DEBUG/MainProcess] | Consumer: Stopping Control...
+[2024-04-18 12:11:45,529: DEBUG/MainProcess] | Consumer: Stopping Tasks...
+[2024-04-18 12:11:45,529: DEBUG/MainProcess] Canceling task consumer...
+[2024-04-18 12:11:45,529: DEBUG/MainProcess] | Consumer: Stopping Gossip...
+[2024-04-18 12:11:45,533: DEBUG/MainProcess] | Consumer: Stopping Mingle...
+[2024-04-18 12:11:45,533: DEBUG/MainProcess] | Consumer: Stopping Heart...
+[2024-04-18 12:11:45,534: DEBUG/MainProcess] | Consumer: Stopping Events...
+[2024-04-18 12:11:45,534: DEBUG/MainProcess] | Consumer: Stopping Connection...
+[2024-04-18 12:11:45,535: DEBUG/MainProcess] | Worker: Stopping Pool...
+[2024-04-18 12:11:46,613: DEBUG/MainProcess] | Worker: Stopping Hub...
+[2024-04-18 12:11:46,613: DEBUG/MainProcess] | Consumer: Shutdown Control...
+[2024-04-18 12:11:46,613: DEBUG/MainProcess] | Consumer: Shutdown Tasks...
+[2024-04-18 12:11:46,613: DEBUG/MainProcess] Canceling task consumer...
+[2024-04-18 12:11:46,613: DEBUG/MainProcess] Closing consumer channel...
+[2024-04-18 12:11:46,614: DEBUG/MainProcess] | Consumer: Shutdown Gossip...
+[2024-04-18 12:11:46,614: DEBUG/MainProcess] | Consumer: Shutdown Heart...
+[2024-04-18 12:11:46,614: DEBUG/MainProcess] | Consumer: Shutdown Events...
+[2024-04-18 12:11:46,614: DEBUG/MainProcess] | Consumer: Shutdown Connection...
+[2024-04-18 12:11:46,617: DEBUG/MainProcess] removing tasks from inqueue until task handler finished
+[2024-04-18 12:12:03,857: DEBUG/MainProcess] | Worker: Preparing bootsteps.
+[2024-04-18 12:12:03,858: DEBUG/MainProcess] | Worker: Building graph...
+[2024-04-18 12:12:03,859: DEBUG/MainProcess] | Worker: New boot order: {Beat, StateDB, Timer, Hub, Pool, Autoscaler, Consumer}
+[2024-04-18 12:12:03,866: DEBUG/MainProcess] | Consumer: Preparing bootsteps.
+[2024-04-18 12:12:03,866: DEBUG/MainProcess] | Consumer: Building graph...
+[2024-04-18 12:12:03,890: DEBUG/MainProcess] | Consumer: New boot order: {Connection, Events, Mingle, Tasks, Control, Agent, Heart, Gossip, event loop}
+[2024-04-18 12:12:03,919: DEBUG/MainProcess] | Worker: Starting Hub
+[2024-04-18 12:12:03,919: DEBUG/MainProcess] ^-- substep ok
+[2024-04-18 12:12:03,919: DEBUG/MainProcess] | Worker: Starting Pool
+[2024-04-18 12:12:05,864: DEBUG/MainProcess] ^-- substep ok
+[2024-04-18 12:12:05,865: DEBUG/MainProcess] | Worker: Starting Consumer
+[2024-04-18 12:12:05,865: DEBUG/MainProcess] | Consumer: Starting Connection
+[2024-04-18 12:12:05,880: INFO/MainProcess] Connected to redis://redis:6379/1
+[2024-04-18 12:12:05,881: DEBUG/MainProcess] ^-- substep ok
+[2024-04-18 12:12:05,881: DEBUG/MainProcess] | Consumer: Starting Events
+[2024-04-18 12:12:05,887: DEBUG/MainProcess] ^-- substep ok
+[2024-04-18 12:12:05,887: DEBUG/MainProcess] | Consumer: Starting Mingle
+[2024-04-18 12:12:05,887: INFO/MainProcess] mingle: searching for neighbors
+[2024-04-18 12:12:06,913: INFO/MainProcess] mingle: all alone
+[2024-04-18 12:12:06,913: DEBUG/MainProcess] ^-- substep ok
+[2024-04-18 12:12:06,913: DEBUG/MainProcess] | Consumer: Starting Tasks
+[2024-04-18 12:12:06,918: DEBUG/MainProcess] ^-- substep ok
+[2024-04-18 12:12:06,918: DEBUG/MainProcess] | Consumer: Starting Control
+[2024-04-18 12:12:06,926: DEBUG/MainProcess] ^-- substep ok
+[2024-04-18 12:12:06,926: DEBUG/MainProcess] | Consumer: Starting Heart
+[2024-04-18 12:12:06,928: DEBUG/MainProcess] ^-- substep ok
+[2024-04-18 12:12:06,929: DEBUG/MainProcess] | Consumer: Starting Gossip
+[2024-04-18 12:12:06,934: DEBUG/MainProcess] ^-- substep ok
+[2024-04-18 12:12:06,934: DEBUG/MainProcess] | Consumer: Starting event loop
+[2024-04-18 12:12:06,934: DEBUG/MainProcess] | Worker: Hub.register Pool...
+[2024-04-18 12:12:06,935: WARNING/MainProcess] /usr/local/lib/python3.9/site-packages/celery/fixups/django.py:203: UserWarning: Using settings.DEBUG leads to a memory
+            leak, never use this setting in production environments!
+  warnings.warn('''Using settings.DEBUG leads to a memory
+
+[2024-04-18 12:12:06,935: INFO/MainProcess] celery@df7ae5211315 ready.
+[2024-04-18 12:12:06,935: DEBUG/MainProcess] basic.qos: prefetch_count->64
+[2024-04-18 12:12:22,611: INFO/MainProcess] Task geospatial.geojsonapi.processapi[4613e62b-b195-4394-9079-547750fa6720] received
+[2024-04-18 12:12:22,611: DEBUG/MainProcess] TaskPool: Apply <function fast_trace_task at 0x7f5013d6be50> (args:('geospatial.geojsonapi.processapi', '4613e62b-b195-4394-9079-547750fa6720', {'lang': 'py', 'task': 'geospatial.geojsonapi.processapi', 'id': '4613e62b-b195-4394-9079-547750fa6720', 'shadow': None, 'eta': None, 'expires': None, 'group': None, 'group_index': None, 'retries': 0, 'timelimit': [None, None], 'root_id': '4613e62b-b195-4394-9079-547750fa6720', 'parent_id': None, 'argsrepr': "('/code/media/geospatialdata/mygeodata_1_0Dy3NoA.zip', 14, 325)", 'kwargsrepr': '{}', 'origin': 'gen61@0e520ce6c6a2', 'ignore_result': False, 'properties': {'correlation_id': '4613e62b-b195-4394-9079-547750fa6720', 'reply_to': '6d425a34-78ad-328f-8fc1-eb994b8c7ed3', 'delivery_mode': 2, 'delivery_info': {'exchange': '', 'routing_key': 'celery'}, 'priority': 0, 'body_encoding': 'base64', 'delivery_tag': '03d30934-7298-4457-acc3-9b110f0947e3'}, 'reply_to': '6d425a34-78ad-328f-8fc1-eb994b8c7ed3', 'correlation_id': '4613e62b-b195-4394-9079-547750fa6720', 'hostname': 'celery@df7ae5211315', 'delivery_info': {'exchange': '',... kwargs:{})
+[2024-04-18 12:12:22,645: WARNING/ForkPoolWorker-15] file path: /code/media/geospatialdata/mygeodata_1_0Dy3NoA.zip
+[2024-04-18 12:12:22,814: DEBUG/ForkPoolWorker-15] GDAL data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/gdal_data'.
+[2024-04-18 12:12:22,814: DEBUG/ForkPoolWorker-15] PROJ data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/proj_data'.
+[2024-04-18 12:12:22,818: DEBUG/ForkPoolWorker-15] Entering env context: <fiona.env.Env object at 0x7f4ff64c1340>
+[2024-04-18 12:12:22,818: DEBUG/ForkPoolWorker-15] Starting outermost env
+[2024-04-18 12:12:22,819: DEBUG/ForkPoolWorker-15] No GDAL environment exists
+[2024-04-18 12:12:22,819: DEBUG/ForkPoolWorker-15] New GDAL environment <fiona._env.GDALEnv object at 0x7f4ff64c12e0> created
+[2024-04-18 12:12:22,824: DEBUG/ForkPoolWorker-15] GDAL data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/gdal_data'.
+[2024-04-18 12:12:22,824: DEBUG/ForkPoolWorker-15] PROJ data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/proj_data'.
+[2024-04-18 12:12:22,824: DEBUG/ForkPoolWorker-15] Started GDALEnv: self=<fiona._env.GDALEnv object at 0x7f4ff64c12e0>.
+[2024-04-18 12:12:22,824: DEBUG/ForkPoolWorker-15] Updated existing <fiona._env.GDALEnv object at 0x7f4ff64c12e0> with options {}
+[2024-04-18 12:12:22,824: DEBUG/ForkPoolWorker-15] Entered env context: <fiona.env.Env object at 0x7f4ff64c1340>
+[2024-04-18 12:12:22,825: DEBUG/ForkPoolWorker-15] Exiting env context: <fiona.env.Env object at 0x7f4ff64c1340>
+[2024-04-18 12:12:22,826: DEBUG/ForkPoolWorker-15] Cleared existing <fiona._env.GDALEnv object at 0x7f4ff64c12e0> options
+[2024-04-18 12:12:22,826: DEBUG/ForkPoolWorker-15] Stopping GDALEnv <fiona._env.GDALEnv object at 0x7f4ff64c12e0>.
+[2024-04-18 12:12:22,826: DEBUG/ForkPoolWorker-15] Error handler popped.
+[2024-04-18 12:12:22,826: DEBUG/ForkPoolWorker-15] Stopped GDALEnv <fiona._env.GDALEnv object at 0x7f4ff64c12e0>.
+[2024-04-18 12:12:22,826: DEBUG/ForkPoolWorker-15] Exiting outermost env
+[2024-04-18 12:12:22,826: DEBUG/ForkPoolWorker-15] Exited env context: <fiona.env.Env object at 0x7f4ff64c1340>
+[2024-04-18 12:12:22,829: DEBUG/ForkPoolWorker-15] Entering env context: <fiona.env.Env object at 0x7f4ff7775460>
+[2024-04-18 12:12:22,829: DEBUG/ForkPoolWorker-15] Starting outermost env
+[2024-04-18 12:12:22,829: DEBUG/ForkPoolWorker-15] No GDAL environment exists
+[2024-04-18 12:12:22,829: DEBUG/ForkPoolWorker-15] New GDAL environment <fiona._env.GDALEnv object at 0x7f4ff75d1790> created
+[2024-04-18 12:12:22,830: DEBUG/ForkPoolWorker-15] GDAL data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/gdal_data'.
+[2024-04-18 12:12:22,830: DEBUG/ForkPoolWorker-15] PROJ data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/proj_data'.
+[2024-04-18 12:12:22,830: DEBUG/ForkPoolWorker-15] Started GDALEnv: self=<fiona._env.GDALEnv object at 0x7f4ff75d1790>.
+[2024-04-18 12:12:22,830: DEBUG/ForkPoolWorker-15] Updated existing <fiona._env.GDALEnv object at 0x7f4ff75d1790> with options {}
+[2024-04-18 12:12:22,830: DEBUG/ForkPoolWorker-15] Entered env context: <fiona.env.Env object at 0x7f4ff7775460>
+[2024-04-18 12:12:22,860: DEBUG/ForkPoolWorker-15] Got coordinate system
+[2024-04-18 12:12:22,861: DEBUG/ForkPoolWorker-15] OLC_FASTSETNEXTBYINDEX: 1
+[2024-04-18 12:12:22,861: DEBUG/ForkPoolWorker-15] OLC_FASTFEATURECOUNT: 1
+[2024-04-18 12:12:22,861: DEBUG/ForkPoolWorker-15] Next index: 0
+[2024-04-18 12:12:22,861: DEBUG/ForkPoolWorker-15] Next index: 1
+[2024-04-18 12:12:22,864: DEBUG/ForkPoolWorker-15] Next index: 2
+[2024-04-18 12:12:22,864: DEBUG/ForkPoolWorker-15] Next index: 3
+[2024-04-18 12:12:22,864: DEBUG/ForkPoolWorker-15] Next index: 4
+[2024-04-18 12:12:22,864: DEBUG/ForkPoolWorker-15] Next index: 5
+[2024-04-18 12:12:22,865: DEBUG/ForkPoolWorker-15] Next index: 6
+[2024-04-18 12:12:22,867: DEBUG/ForkPoolWorker-15] Next index: 7
+[2024-04-18 12:12:22,868: DEBUG/ForkPoolWorker-15] Next index: 8
+[2024-04-18 12:12:22,868: DEBUG/ForkPoolWorker-15] Next index: 9
+[2024-04-18 12:12:22,868: DEBUG/ForkPoolWorker-15] Next index: 10
+[2024-04-18 12:12:22,868: DEBUG/ForkPoolWorker-15] Next index: 11
+[2024-04-18 12:12:22,868: DEBUG/ForkPoolWorker-15] Next index: 12
+[2024-04-18 12:12:22,868: DEBUG/ForkPoolWorker-15] Next index: 13
+[2024-04-18 12:12:22,868: DEBUG/ForkPoolWorker-15] Next index: 14
+[2024-04-18 12:12:22,869: DEBUG/ForkPoolWorker-15] Next index: 15
+[2024-04-18 12:12:22,869: DEBUG/ForkPoolWorker-15] Next index: 16
+[2024-04-18 12:12:22,869: DEBUG/ForkPoolWorker-15] Next index: 17
+[2024-04-18 12:12:22,871: DEBUG/ForkPoolWorker-15] Next index: 18
+[2024-04-18 12:12:22,872: DEBUG/ForkPoolWorker-15] Next index: 19
+[2024-04-18 12:12:22,872: DEBUG/ForkPoolWorker-15] Next index: 20
+[2024-04-18 12:12:22,872: DEBUG/ForkPoolWorker-15] Next index: 21
+[2024-04-18 12:12:22,872: DEBUG/ForkPoolWorker-15] Next index: 22
+[2024-04-18 12:12:22,872: DEBUG/ForkPoolWorker-15] Next index: 23
+[2024-04-18 12:12:22,872: DEBUG/ForkPoolWorker-15] Next index: 24
+[2024-04-18 12:12:22,874: DEBUG/ForkPoolWorker-15] Next index: 25
+[2024-04-18 12:12:22,874: DEBUG/ForkPoolWorker-15] Next index: 26
+[2024-04-18 12:12:22,875: DEBUG/ForkPoolWorker-15] Next index: 27
+[2024-04-18 12:12:22,875: DEBUG/ForkPoolWorker-15] Next index: 28
+[2024-04-18 12:12:22,877: DEBUG/ForkPoolWorker-15] Next index: 29
+[2024-04-18 12:12:22,877: DEBUG/ForkPoolWorker-15] Next index: 30
+[2024-04-18 12:12:22,877: DEBUG/ForkPoolWorker-15] Next index: 31
+[2024-04-18 12:12:22,877: DEBUG/ForkPoolWorker-15] Next index: 32
+[2024-04-18 12:12:22,902: DEBUG/ForkPoolWorker-15] Flushed buffer
+[2024-04-18 12:12:22,902: DEBUG/ForkPoolWorker-15] Stopped session
+[2024-04-18 12:12:22,902: DEBUG/ForkPoolWorker-15] Exiting env context: <fiona.env.Env object at 0x7f4ff7775460>
+[2024-04-18 12:12:22,902: DEBUG/ForkPoolWorker-15] Cleared existing <fiona._env.GDALEnv object at 0x7f4ff75d1790> options
+[2024-04-18 12:12:22,902: DEBUG/ForkPoolWorker-15] Stopping GDALEnv <fiona._env.GDALEnv object at 0x7f4ff75d1790>.
+[2024-04-18 12:12:22,902: DEBUG/ForkPoolWorker-15] Error handler popped.
+[2024-04-18 12:12:22,902: DEBUG/ForkPoolWorker-15] Stopped GDALEnv <fiona._env.GDALEnv object at 0x7f4ff75d1790>.
+[2024-04-18 12:12:22,902: DEBUG/ForkPoolWorker-15] Exiting outermost env
+[2024-04-18 12:12:22,902: DEBUG/ForkPoolWorker-15] Exited env context: <fiona.env.Env object at 0x7f4ff7775460>
+[2024-04-18 12:12:22,903: WARNING/ForkPoolWorker-15] check check
+[2024-04-18 12:12:22,931: ERROR/ForkPoolWorker-15] Task geospatial.geojsonapi.processapi[4613e62b-b195-4394-9079-547750fa6720] raised unexpected: ValueError('Cannot assign "14": "JsonGeometry.user" must be a "User" instance.')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 451, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 734, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/geospatial/geojsonapi.py", line 30, in processapi
+    JsonGeometry.objects.create(geom=geom, palikaupload = file_obj,
+  File "/usr/local/lib/python3.9/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/django/db/models/query.py", line 669, in create
+    obj = self.model(**kwargs)
+  File "/usr/local/lib/python3.9/site-packages/django/db/models/base.py", line 561, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/usr/local/lib/python3.9/site-packages/django/db/models/fields/related_descriptors.py", line 235, in __set__
+    raise ValueError(
+ValueError: Cannot assign "14": "JsonGeometry.user" must be a "User" instance.
+[2024-04-18 12:13:14,298: DEBUG/MainProcess] | Worker: Closing Hub...
+[2024-04-18 12:13:14,299: DEBUG/MainProcess] | Worker: Closing Pool...
+[2024-04-18 12:13:14,300: DEBUG/MainProcess] | Worker: Closing Consumer...
+[2024-04-18 12:13:14,300: DEBUG/MainProcess] | Worker: Stopping Consumer...
+[2024-04-18 12:13:14,300: DEBUG/MainProcess] | Consumer: Closing Connection...
+[2024-04-18 12:13:14,300: DEBUG/MainProcess] | Consumer: Closing Events...
+[2024-04-18 12:13:14,300: DEBUG/MainProcess] | Consumer: Closing Mingle...
+[2024-04-18 12:13:14,301: DEBUG/MainProcess] | Consumer: Closing Tasks...
+[2024-04-18 12:13:14,301: DEBUG/MainProcess] | Consumer: Closing Control...
+[2024-04-18 12:13:14,301: DEBUG/MainProcess] | Consumer: Closing Heart...
+[2024-04-18 12:13:14,301: DEBUG/MainProcess] | Consumer: Closing Gossip...
+[2024-04-18 12:13:14,301: DEBUG/MainProcess] | Consumer: Closing event loop...
+[2024-04-18 12:13:14,301: DEBUG/MainProcess] | Consumer: Stopping event loop...
+[2024-04-18 12:13:14,301: DEBUG/MainProcess] | Consumer: Stopping Gossip...
+[2024-04-18 12:13:14,307: DEBUG/MainProcess] | Consumer: Stopping Heart...
+[2024-04-18 12:13:14,308: DEBUG/MainProcess] | Consumer: Stopping Control...
+[2024-04-18 12:13:14,311: DEBUG/MainProcess] | Consumer: Stopping Tasks...
+[2024-04-18 12:13:14,311: DEBUG/MainProcess] Canceling task consumer...
+[2024-04-18 12:13:14,312: DEBUG/MainProcess] | Consumer: Stopping Mingle...
+[2024-04-18 12:13:14,312: DEBUG/MainProcess] | Consumer: Stopping Events...
+[2024-04-18 12:13:14,312: DEBUG/MainProcess] | Consumer: Stopping Connection...
+[2024-04-18 12:13:14,312: DEBUG/MainProcess] | Worker: Stopping Pool...
+[2024-04-18 12:13:47,656: DEBUG/MainProcess] | Worker: Preparing bootsteps.
+[2024-04-18 12:13:47,657: DEBUG/MainProcess] | Worker: Building graph...
+[2024-04-18 12:13:47,657: DEBUG/MainProcess] | Worker: New boot order: {Timer, Hub, Pool, Autoscaler, Beat, StateDB, Consumer}
+[2024-04-18 12:13:47,662: DEBUG/MainProcess] | Consumer: Preparing bootsteps.
+[2024-04-18 12:13:47,662: DEBUG/MainProcess] | Consumer: Building graph...
+[2024-04-18 12:13:47,681: DEBUG/MainProcess] | Consumer: New boot order: {Connection, Agent, Events, Heart, Mingle, Tasks, Control, Gossip, event loop}
+[2024-04-18 12:13:47,706: DEBUG/MainProcess] | Worker: Starting Hub
+[2024-04-18 12:13:47,706: DEBUG/MainProcess] ^-- substep ok
+[2024-04-18 12:13:47,706: DEBUG/MainProcess] | Worker: Starting Pool
+[2024-04-18 12:13:49,216: DEBUG/MainProcess] ^-- substep ok
+[2024-04-18 12:13:49,216: DEBUG/MainProcess] | Worker: Starting Consumer
+[2024-04-18 12:13:49,216: DEBUG/MainProcess] | Consumer: Starting Connection
+[2024-04-18 12:13:49,264: INFO/MainProcess] Connected to redis://redis:6379/1
+[2024-04-18 12:13:49,264: DEBUG/MainProcess] ^-- substep ok
+[2024-04-18 12:13:49,264: DEBUG/MainProcess] | Consumer: Starting Events
+[2024-04-18 12:13:49,269: DEBUG/MainProcess] ^-- substep ok
+[2024-04-18 12:13:49,269: DEBUG/MainProcess] | Consumer: Starting Heart
+[2024-04-18 12:13:49,272: DEBUG/MainProcess] ^-- substep ok
+[2024-04-18 12:13:49,272: DEBUG/MainProcess] | Consumer: Starting Mingle
+[2024-04-18 12:13:49,272: INFO/MainProcess] mingle: searching for neighbors
+[2024-04-18 12:13:50,290: INFO/MainProcess] mingle: all alone
+[2024-04-18 12:13:50,290: DEBUG/MainProcess] ^-- substep ok
+[2024-04-18 12:13:50,290: DEBUG/MainProcess] | Consumer: Starting Tasks
+[2024-04-18 12:13:50,297: DEBUG/MainProcess] ^-- substep ok
+[2024-04-18 12:13:50,297: DEBUG/MainProcess] | Consumer: Starting Control
+[2024-04-18 12:13:50,307: DEBUG/MainProcess] ^-- substep ok
+[2024-04-18 12:13:50,308: DEBUG/MainProcess] | Consumer: Starting Gossip
+[2024-04-18 12:13:50,316: DEBUG/MainProcess] ^-- substep ok
+[2024-04-18 12:13:50,316: DEBUG/MainProcess] | Consumer: Starting event loop
+[2024-04-18 12:13:50,316: DEBUG/MainProcess] | Worker: Hub.register Pool...
+[2024-04-18 12:13:50,317: WARNING/MainProcess] /usr/local/lib/python3.9/site-packages/celery/fixups/django.py:203: UserWarning: Using settings.DEBUG leads to a memory
+            leak, never use this setting in production environments!
+  warnings.warn('''Using settings.DEBUG leads to a memory
+
+[2024-04-18 12:13:50,317: INFO/MainProcess] celery@155d6c6aa9ec ready.
+[2024-04-18 12:13:50,317: DEBUG/MainProcess] basic.qos: prefetch_count->64
+[2024-04-18 12:14:13,286: INFO/MainProcess] Task geospatial.geojsonapi.processapi[0b309c5d-9a3a-4765-b694-adf7f963b90d] received
+[2024-04-18 12:14:13,287: DEBUG/MainProcess] TaskPool: Apply <function fast_trace_task at 0x7f8e97169e50> (args:('geospatial.geojsonapi.processapi', '0b309c5d-9a3a-4765-b694-adf7f963b90d', {'lang': 'py', 'task': 'geospatial.geojsonapi.processapi', 'id': '0b309c5d-9a3a-4765-b694-adf7f963b90d', 'shadow': None, 'eta': None, 'expires': None, 'group': None, 'group_index': None, 'retries': 0, 'timelimit': [None, None], 'root_id': '0b309c5d-9a3a-4765-b694-adf7f963b90d', 'parent_id': None, 'argsrepr': "('/code/media/geospatialdata/mygeodata_1_JH9xIF8.zip', 14, 358)", 'kwargsrepr': '{}', 'origin': 'gen61@36fcd5f5ce61', 'ignore_result': False, 'properties': {'correlation_id': '0b309c5d-9a3a-4765-b694-adf7f963b90d', 'reply_to': '68eee9f6-502e-37e7-bdfb-7d8857cd5dca', 'delivery_mode': 2, 'delivery_info': {'exchange': '', 'routing_key': 'celery'}, 'priority': 0, 'body_encoding': 'base64', 'delivery_tag': '4a25157e-e0ca-4176-bb28-22bff7e606e2'}, 'reply_to': '68eee9f6-502e-37e7-bdfb-7d8857cd5dca', 'correlation_id': '0b309c5d-9a3a-4765-b694-adf7f963b90d', 'hostname': 'celery@155d6c6aa9ec', 'delivery_info': {'exchange': '',... kwargs:{})
+[2024-04-18 12:14:13,319: WARNING/ForkPoolWorker-15] file path: /code/media/geospatialdata/mygeodata_1_JH9xIF8.zip
+[2024-04-18 12:14:13,369: DEBUG/ForkPoolWorker-15] GDAL data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/gdal_data'.
+[2024-04-18 12:14:13,369: DEBUG/ForkPoolWorker-15] PROJ data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/proj_data'.
+[2024-04-18 12:14:13,373: DEBUG/ForkPoolWorker-15] Entering env context: <fiona.env.Env object at 0x7f8e7d8bb310>
+[2024-04-18 12:14:13,373: DEBUG/ForkPoolWorker-15] Starting outermost env
+[2024-04-18 12:14:13,373: DEBUG/ForkPoolWorker-15] No GDAL environment exists
+[2024-04-18 12:14:13,373: DEBUG/ForkPoolWorker-15] New GDAL environment <fiona._env.GDALEnv object at 0x7f8e7d8bb2e0> created
+[2024-04-18 12:14:13,377: DEBUG/ForkPoolWorker-15] GDAL data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/gdal_data'.
+[2024-04-18 12:14:13,377: DEBUG/ForkPoolWorker-15] PROJ data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/proj_data'.
+[2024-04-18 12:14:13,377: DEBUG/ForkPoolWorker-15] Started GDALEnv: self=<fiona._env.GDALEnv object at 0x7f8e7d8bb2e0>.
+[2024-04-18 12:14:13,378: DEBUG/ForkPoolWorker-15] Updated existing <fiona._env.GDALEnv object at 0x7f8e7d8bb2e0> with options {}
+[2024-04-18 12:14:13,378: DEBUG/ForkPoolWorker-15] Entered env context: <fiona.env.Env object at 0x7f8e7d8bb310>
+[2024-04-18 12:14:13,380: DEBUG/ForkPoolWorker-15] Exiting env context: <fiona.env.Env object at 0x7f8e7d8bb310>
+[2024-04-18 12:14:13,380: DEBUG/ForkPoolWorker-15] Cleared existing <fiona._env.GDALEnv object at 0x7f8e7d8bb2e0> options
+[2024-04-18 12:14:13,380: DEBUG/ForkPoolWorker-15] Stopping GDALEnv <fiona._env.GDALEnv object at 0x7f8e7d8bb2e0>.
+[2024-04-18 12:14:13,380: DEBUG/ForkPoolWorker-15] Error handler popped.
+[2024-04-18 12:14:13,380: DEBUG/ForkPoolWorker-15] Stopped GDALEnv <fiona._env.GDALEnv object at 0x7f8e7d8bb2e0>.
+[2024-04-18 12:14:13,380: DEBUG/ForkPoolWorker-15] Exiting outermost env
+[2024-04-18 12:14:13,380: DEBUG/ForkPoolWorker-15] Exited env context: <fiona.env.Env object at 0x7f8e7d8bb310>
+[2024-04-18 12:14:13,383: DEBUG/ForkPoolWorker-15] Entering env context: <fiona.env.Env object at 0x7f8e7eb77460>
+[2024-04-18 12:14:13,383: DEBUG/ForkPoolWorker-15] Starting outermost env
+[2024-04-18 12:14:13,383: DEBUG/ForkPoolWorker-15] No GDAL environment exists
+[2024-04-18 12:14:13,383: DEBUG/ForkPoolWorker-15] New GDAL environment <fiona._env.GDALEnv object at 0x7f8e7e9ca790> created
+[2024-04-18 12:14:13,384: DEBUG/ForkPoolWorker-15] GDAL data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/gdal_data'.
+[2024-04-18 12:14:13,384: DEBUG/ForkPoolWorker-15] PROJ data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/proj_data'.
+[2024-04-18 12:14:13,384: DEBUG/ForkPoolWorker-15] Started GDALEnv: self=<fiona._env.GDALEnv object at 0x7f8e7e9ca790>.
+[2024-04-18 12:14:13,384: DEBUG/ForkPoolWorker-15] Updated existing <fiona._env.GDALEnv object at 0x7f8e7e9ca790> with options {}
+[2024-04-18 12:14:13,384: DEBUG/ForkPoolWorker-15] Entered env context: <fiona.env.Env object at 0x7f8e7eb77460>
+[2024-04-18 12:14:13,417: DEBUG/ForkPoolWorker-15] Got coordinate system
+[2024-04-18 12:14:13,418: DEBUG/ForkPoolWorker-15] OLC_FASTSETNEXTBYINDEX: 1
+[2024-04-18 12:14:13,419: DEBUG/ForkPoolWorker-15] OLC_FASTFEATURECOUNT: 1
+[2024-04-18 12:14:13,419: DEBUG/ForkPoolWorker-15] Next index: 0
+[2024-04-18 12:14:13,419: DEBUG/ForkPoolWorker-15] Next index: 1
+[2024-04-18 12:14:13,423: DEBUG/ForkPoolWorker-15] Next index: 2
+[2024-04-18 12:14:13,423: DEBUG/ForkPoolWorker-15] Next index: 3
+[2024-04-18 12:14:13,424: DEBUG/ForkPoolWorker-15] Next index: 4
+[2024-04-18 12:14:13,424: DEBUG/ForkPoolWorker-15] Next index: 5
+[2024-04-18 12:14:13,424: DEBUG/ForkPoolWorker-15] Next index: 6
+[2024-04-18 12:14:13,428: DEBUG/ForkPoolWorker-15] Next index: 7
+[2024-04-18 12:14:13,428: DEBUG/ForkPoolWorker-15] Next index: 8
+[2024-04-18 12:14:13,428: DEBUG/ForkPoolWorker-15] Next index: 9
+[2024-04-18 12:14:13,428: DEBUG/ForkPoolWorker-15] Next index: 10
+[2024-04-18 12:14:13,429: DEBUG/ForkPoolWorker-15] Next index: 11
+[2024-04-18 12:14:13,429: DEBUG/ForkPoolWorker-15] Next index: 12
+[2024-04-18 12:14:13,429: DEBUG/ForkPoolWorker-15] Next index: 13
+[2024-04-18 12:14:13,430: DEBUG/ForkPoolWorker-15] Next index: 14
+[2024-04-18 12:14:13,431: DEBUG/ForkPoolWorker-15] Next index: 15
+[2024-04-18 12:14:13,431: DEBUG/ForkPoolWorker-15] Next index: 16
+[2024-04-18 12:14:13,431: DEBUG/ForkPoolWorker-15] Next index: 17
+[2024-04-18 12:14:13,436: DEBUG/ForkPoolWorker-15] Next index: 18
+[2024-04-18 12:14:13,436: DEBUG/ForkPoolWorker-15] Next index: 19
+[2024-04-18 12:14:13,437: DEBUG/ForkPoolWorker-15] Next index: 20
+[2024-04-18 12:14:13,437: DEBUG/ForkPoolWorker-15] Next index: 21
+[2024-04-18 12:14:13,437: DEBUG/ForkPoolWorker-15] Next index: 22
+[2024-04-18 12:14:13,437: DEBUG/ForkPoolWorker-15] Next index: 23
+[2024-04-18 12:14:13,437: DEBUG/ForkPoolWorker-15] Next index: 24
+[2024-04-18 12:14:13,441: DEBUG/ForkPoolWorker-15] Next index: 25
+[2024-04-18 12:14:13,441: DEBUG/ForkPoolWorker-15] Next index: 26
+[2024-04-18 12:14:13,441: DEBUG/ForkPoolWorker-15] Next index: 27
+[2024-04-18 12:14:13,442: DEBUG/ForkPoolWorker-15] Next index: 28
+[2024-04-18 12:14:13,444: DEBUG/ForkPoolWorker-15] Next index: 29
+[2024-04-18 12:14:13,445: DEBUG/ForkPoolWorker-15] Next index: 30
+[2024-04-18 12:14:13,445: DEBUG/ForkPoolWorker-15] Next index: 31
+[2024-04-18 12:14:13,445: DEBUG/ForkPoolWorker-15] Next index: 32
+[2024-04-18 12:14:13,476: DEBUG/ForkPoolWorker-15] Flushed buffer
+[2024-04-18 12:14:13,476: DEBUG/ForkPoolWorker-15] Stopped session
+[2024-04-18 12:14:13,476: DEBUG/ForkPoolWorker-15] Exiting env context: <fiona.env.Env object at 0x7f8e7eb77460>
+[2024-04-18 12:14:13,476: DEBUG/ForkPoolWorker-15] Cleared existing <fiona._env.GDALEnv object at 0x7f8e7e9ca790> options
+[2024-04-18 12:14:13,476: DEBUG/ForkPoolWorker-15] Stopping GDALEnv <fiona._env.GDALEnv object at 0x7f8e7e9ca790>.
+[2024-04-18 12:14:13,476: DEBUG/ForkPoolWorker-15] Error handler popped.
+[2024-04-18 12:14:13,476: DEBUG/ForkPoolWorker-15] Stopped GDALEnv <fiona._env.GDALEnv object at 0x7f8e7e9ca790>.
+[2024-04-18 12:14:13,477: DEBUG/ForkPoolWorker-15] Exiting outermost env
+[2024-04-18 12:14:13,477: DEBUG/ForkPoolWorker-15] Exited env context: <fiona.env.Env object at 0x7f8e7eb77460>
+[2024-04-18 12:14:13,477: WARNING/ForkPoolWorker-15] check check
+[2024-04-18 12:14:13,502: ERROR/ForkPoolWorker-15] Task geospatial.geojsonapi.processapi[0b309c5d-9a3a-4765-b694-adf7f963b90d] raised unexpected: ValueError('Cannot assign "14": "JsonGeometry.user" must be a "User" instance.')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 451, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 734, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/geospatial/geojsonapi.py", line 30, in processapi
+    JsonGeometry.objects.create(geom=geom, palikaupload = file_obj,
+  File "/usr/local/lib/python3.9/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/django/db/models/query.py", line 669, in create
+    obj = self.model(**kwargs)
+  File "/usr/local/lib/python3.9/site-packages/django/db/models/base.py", line 561, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/usr/local/lib/python3.9/site-packages/django/db/models/fields/related_descriptors.py", line 235, in __set__
+    raise ValueError(
+ValueError: Cannot assign "14": "JsonGeometry.user" must be a "User" instance.
+[2024-04-18 12:17:45,539: INFO/MainProcess] Task geospatial.geojsonapi.processapi[5dc8d20c-763f-4a17-8d68-d3a5a0e4de7f] received
+[2024-04-18 12:17:45,539: DEBUG/MainProcess] TaskPool: Apply <function fast_trace_task at 0x7f8e97169e50> (args:('geospatial.geojsonapi.processapi', '5dc8d20c-763f-4a17-8d68-d3a5a0e4de7f', {'lang': 'py', 'task': 'geospatial.geojsonapi.processapi', 'id': '5dc8d20c-763f-4a17-8d68-d3a5a0e4de7f', 'shadow': None, 'eta': None, 'expires': None, 'group': None, 'group_index': None, 'retries': 0, 'timelimit': [None, None], 'root_id': '5dc8d20c-763f-4a17-8d68-d3a5a0e4de7f', 'parent_id': None, 'argsrepr': "('/code/media/geospatialdata/mygeodata_1_JKByJIg.zip', 14, 360)", 'kwargsrepr': '{}', 'origin': 'gen219@36fcd5f5ce61', 'ignore_result': False, 'properties': {'correlation_id': '5dc8d20c-763f-4a17-8d68-d3a5a0e4de7f', 'reply_to': '7b463129-dca9-352b-8e16-473413d853bc', 'delivery_mode': 2, 'delivery_info': {'exchange': '', 'routing_key': 'celery'}, 'priority': 0, 'body_encoding': 'base64', 'delivery_tag': 'cea2c598-ed54-4b38-9b73-adb17ea20f51'}, 'reply_to': '7b463129-dca9-352b-8e16-473413d853bc', 'correlation_id': '5dc8d20c-763f-4a17-8d68-d3a5a0e4de7f', 'hostname': 'celery@155d6c6aa9ec', 'delivery_info': {'exchange': '',... kwargs:{})
+[2024-04-18 12:17:45,569: WARNING/ForkPoolWorker-15] file path: /code/media/geospatialdata/mygeodata_1_JKByJIg.zip
+[2024-04-18 12:17:45,571: DEBUG/ForkPoolWorker-15] Entering env context: <fiona.env.Env object at 0x7f8e7d8cb760>
+[2024-04-18 12:17:45,571: DEBUG/ForkPoolWorker-15] Starting outermost env
+[2024-04-18 12:17:45,571: DEBUG/ForkPoolWorker-15] No GDAL environment exists
+[2024-04-18 12:17:45,571: DEBUG/ForkPoolWorker-15] New GDAL environment <fiona._env.GDALEnv object at 0x7f8e7ead96a0> created
+[2024-04-18 12:17:45,572: DEBUG/ForkPoolWorker-15] GDAL data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/gdal_data'.
+[2024-04-18 12:17:45,573: DEBUG/ForkPoolWorker-15] PROJ data found in package: path='/usr/local/lib/python3.9/site-packages/fiona/proj_data'.
+[2024-04-18 12:17:45,573: DEBUG/ForkPoolWorker-15] Started GDALEnv: self=<fiona._env.GDALEnv object at 0x7f8e7ead96a0>.
+[2024-04-18 12:17:45,573: DEBUG/ForkPoolWorker-15] Updated existing <fiona._env.GDALEnv object at 0x7f8e7ead96a0> with options {}
+[2024-04-18 12:17:45,573: DEBUG/ForkPoolWorker-15] Entered env context: <fiona.env.Env object at 0x7f8e7d8cb760>
+[2024-04-18 12:17:45,594: DEBUG/ForkPoolWorker-15] Got coordinate system
+[2024-04-18 12:17:45,596: DEBUG/ForkPoolWorker-15] OLC_FASTSETNEXTBYINDEX: 1
+[2024-04-18 12:17:45,597: DEBUG/ForkPoolWorker-15] OLC_FASTFEATURECOUNT: 1
+[2024-04-18 12:17:45,597: DEBUG/ForkPoolWorker-15] Next index: 0
+[2024-04-18 12:17:45,597: DEBUG/ForkPoolWorker-15] Next index: 1
+[2024-04-18 12:17:45,606: DEBUG/ForkPoolWorker-15] Next index: 2
+[2024-04-18 12:17:45,607: DEBUG/ForkPoolWorker-15] Next index: 3
+[2024-04-18 12:17:45,607: DEBUG/ForkPoolWorker-15] Next index: 4
+[2024-04-18 12:17:45,608: DEBUG/ForkPoolWorker-15] Next index: 5
+[2024-04-18 12:17:45,608: DEBUG/ForkPoolWorker-15] Next index: 6
+[2024-04-18 12:17:45,613: DEBUG/ForkPoolWorker-15] Next index: 7
+[2024-04-18 12:17:45,614: DEBUG/ForkPoolWorker-15] Next index: 8
+[2024-04-18 12:17:45,614: DEBUG/ForkPoolWorker-15] Next index: 9
+[2024-04-18 12:17:45,614: DEBUG/ForkPoolWorker-15] Next index: 10
+[2024-04-18 12:17:45,615: DEBUG/ForkPoolWorker-15] Next index: 11
+[2024-04-18 12:17:45,615: DEBUG/ForkPoolWorker-15] Next index: 12
+[2024-04-18 12:17:45,615: DEBUG/ForkPoolWorker-15] Next index: 13
+[2024-04-18 12:17:45,615: DEBUG/ForkPoolWorker-15] Next index: 14
+[2024-04-18 12:17:45,615: DEBUG/ForkPoolWorker-15] Next index: 15
+[2024-04-18 12:17:45,616: DEBUG/ForkPoolWorker-15] Next index: 16
+[2024-04-18 12:17:45,616: DEBUG/ForkPoolWorker-15] Next index: 17
+[2024-04-18 12:17:45,620: DEBUG/ForkPoolWorker-15] Next index: 18
+[2024-04-18 12:17:45,621: DEBUG/ForkPoolWorker-15] Next index: 19
+[2024-04-18 12:17:45,621: DEBUG/ForkPoolWorker-15] Next index: 20
+[2024-04-18 12:17:45,621: DEBUG/ForkPoolWorker-15] Next index: 21
+[2024-04-18 12:17:45,621: DEBUG/ForkPoolWorker-15] Next index: 22
+[2024-04-18 12:17:45,621: DEBUG/ForkPoolWorker-15] Next index: 23
+[2024-04-18 12:17:45,622: DEBUG/ForkPoolWorker-15] Next index: 24
+[2024-04-18 12:17:45,625: DEBUG/ForkPoolWorker-15] Next index: 25
+[2024-04-18 12:17:45,626: DEBUG/ForkPoolWorker-15] Next index: 26
+[2024-04-18 12:17:45,627: DEBUG/ForkPoolWorker-15] Next index: 27
+[2024-04-18 12:17:45,628: DEBUG/ForkPoolWorker-15] Next index: 28
+[2024-04-18 12:17:45,633: DEBUG/ForkPoolWorker-15] Next index: 29
+[2024-04-18 12:17:45,633: DEBUG/ForkPoolWorker-15] Next index: 30
+[2024-04-18 12:17:45,634: DEBUG/ForkPoolWorker-15] Next index: 31
+[2024-04-18 12:17:45,635: DEBUG/ForkPoolWorker-15] Next index: 32
+[2024-04-18 12:17:45,650: DEBUG/ForkPoolWorker-15] Flushed buffer
+[2024-04-18 12:17:45,650: DEBUG/ForkPoolWorker-15] Stopped session
+[2024-04-18 12:17:45,650: DEBUG/ForkPoolWorker-15] Exiting env context: <fiona.env.Env object at 0x7f8e7d8cb760>
+[2024-04-18 12:17:45,650: DEBUG/ForkPoolWorker-15] Cleared existing <fiona._env.GDALEnv object at 0x7f8e7ead96a0> options
+[2024-04-18 12:17:45,651: DEBUG/ForkPoolWorker-15] Stopping GDALEnv <fiona._env.GDALEnv object at 0x7f8e7ead96a0>.
+[2024-04-18 12:17:45,651: DEBUG/ForkPoolWorker-15] Error handler popped.
+[2024-04-18 12:17:45,651: DEBUG/ForkPoolWorker-15] Stopped GDALEnv <fiona._env.GDALEnv object at 0x7f8e7ead96a0>.
+[2024-04-18 12:17:45,651: DEBUG/ForkPoolWorker-15] Exiting outermost env
+[2024-04-18 12:17:45,651: DEBUG/ForkPoolWorker-15] Exited env context: <fiona.env.Env object at 0x7f8e7d8cb760>
+[2024-04-18 12:17:45,651: WARNING/ForkPoolWorker-15] check check
+[2024-04-18 12:17:45,666: ERROR/ForkPoolWorker-15] Task geospatial.geojsonapi.processapi[5dc8d20c-763f-4a17-8d68-d3a5a0e4de7f] raised unexpected: ValueError('Cannot assign "14": "JsonGeometry.user" must be a "User" instance.')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 451, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/celery/app/trace.py", line 734, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/geospatial/geojsonapi.py", line 30, in processapi
+    JsonGeometry.objects.create(geom=geom, palikaupload = file_obj,
+  File "/usr/local/lib/python3.9/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/django/db/models/query.py", line 669, in create
+    obj = self.model(**kwargs)
+  File "/usr/local/lib/python3.9/site-packages/django/db/models/base.py", line 561, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/usr/local/lib/python3.9/site-packages/django/db/models/fields/related_descriptors.py", line 235, in __set__
+    raise ValueError(
+ValueError: Cannot assign "14": "JsonGeometry.user" must be a "User" instance.

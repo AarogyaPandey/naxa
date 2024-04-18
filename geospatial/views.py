@@ -45,6 +45,7 @@ class Geom(APIView):
             serializer=UploadSerializer(data=request.data)
             if serializer.is_valid():
                 obj=serializer.save()
+                print("this is the object", obj.id)
                 
             if file_type=="shapefile":
                 gdf = gpd.read_file(obj.data_file.path)
@@ -70,7 +71,7 @@ class Geom(APIView):
                 return Response('Shapefile uploaded successfully')
             elif file_type=="geojson": 
                 print("is geo json") 
-                processapi.delay(obj.data_file.path,request.user.id)
+                processapi(obj.data_file.path,request.user.id,obj.id)
                 return Response("The data is being uploaded...")                          
         except Exception as e:
             return Response(f'Error uploading shapefile: {str(e)}')

@@ -7,8 +7,9 @@ from django.contrib.gis.geos import GEOSGeometry
 import geopandas as gpd
 from geospatial.models import PalikaUpload
 
-@shared_task
-def processapi(data_file,user_id): 
+# @shared_task
+def processapi(data_file,user_id,file_id):
+    file_obj = PalikaUpload.objects.get(id = file_id)
     print(f"file path: {data_file}")
     gdf = gpd.read_file(data_file)
     print("check check")
@@ -26,7 +27,7 @@ def processapi(data_file,user_id):
         bbox_width=bbox[2]-bbox[0]  
         bbox_height=bbox[3]-bbox[1]
         bbox_area=bbox_width*bbox_height*111.32*111.32
-        JsonGeometry.objects.create(geom=geom, 
+        JsonGeometry.objects.create(geom=geom, palikaupload = file_obj,
                                     palika_name=palika_name, description=description, 
                                     area=area,ward_number=ward_number,district=district, 
                                     bbox_area=bbox_area, bbox=bbox, extra_json=attr_data, user_id=user_id)
