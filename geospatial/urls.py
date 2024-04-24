@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import  DefaultRouter
-from geospatial.views import GeoSpatial, Geom, GetApi, JsonResponse, JsonResponseShp, BankPost, BankGet, download, palikafilter
+from .views import GeoSpatial, Geom, GetApi, JsonResponse, JsonResponseShp, BankPost, BankGet, download, palikafilter, WeatherApi
 
 router=DefaultRouter()
 router.register(r'geos',GeoSpatial)
@@ -16,5 +16,8 @@ urlpatterns = [
     path('bankget/', BankGet.as_view(), name='bankget'),
     path('download/', download, name='download'),
     path('palikafilter/', palikafilter, name='palikafilter'),
+    # path('getweather/', get_weather_at, name='getweather'),
+    # path('getcurrentweather/', get_current_weather, name='getcurrentweather'),
+    path('weatherapi/', WeatherApi.as_view(), name='weatherapi'),
 
 ]

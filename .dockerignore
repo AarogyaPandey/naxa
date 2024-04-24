@@ -1,2 +1,4 @@
 postgis_data
 redis
+logs
+_redis_data
