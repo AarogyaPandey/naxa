@@ -17,7 +17,7 @@ class BankGeometryAdmin(admin.ModelAdmin):
     list_display=['name_ne', 'name_en', 'amenity']
     
 class WeatherForecastAdmin(admin.ModelAdmin):
-    list_display=['precipitation', 'temperature_2m', 'rain', 'date']
+    list_display=['precipitation', 'temperature_2m', 'rain','humidity', 'date']
 
 admin.site.register(GeoSpatialData, GeoSpatialDataAdmin)
 admin.site.register(PalikaUpload, PalikaUploadAdmin)

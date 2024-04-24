@@ -244,7 +244,7 @@ class WeatherApi(APIView):
             inclusive = "left"
         )}
         hourly_data["temperature_2m"] = current_apparent_temperature
-        hourly_data["precipitation_probability"] = current_relative_humidity_2m
+        hourly_data["humidity"] = current_relative_humidity_2m
         hourly_data["precipitation"] = current_precipitation
         hourly_data["rain"] = current_rain
         # date_value = pd.to_datetime(current.Time(), unit="s")
@@ -254,7 +254,7 @@ class WeatherApi(APIView):
 
         
         obj = WeatherForecast.objects.create(temperature_2m=float(hourly_data["temperature_2m"]), rain=float(hourly_data["rain"]), 
-                                             precipitation_probability=float(hourly_data["precipitation_probability"]), 
+                                             humidity=float(hourly_data["humidity"]), 
                                              precipitation=float(hourly_data["precipitation"]),date= date_value)
         print(obj)
         print(f"Current time {current.Time()}")

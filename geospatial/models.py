@@ -75,7 +75,7 @@ class WeatherForecast(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE, blank = True, null = True)
     date=models.DateTimeField(blank=True, null=True)
     temperature_2m=models.FloatField(blank=True, null=True)
-    precipitation_probability=models.FloatField(blank=True, null=True)
+    humidity=models.FloatField(blank=True, null=True)
     precipitation=models.FloatField(blank=True, null=True)
     rain=models.FloatField(blank=True, null=True)
     
