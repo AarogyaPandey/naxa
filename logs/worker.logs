@@ -5043,3 +5043,39 @@ ValueError: Cannot assign "14": "JsonGeometry.user" must be a "User" instance.
 
 [2024-04-24 15:47:48,536: INFO/MainProcess] celery@3b068d58602f ready.
 [2024-04-24 15:47:48,536: DEBUG/MainProcess] basic.qos: prefetch_count->64
+[2024-04-25 09:44:13,564: DEBUG/MainProcess] | Worker: Preparing bootsteps.
+[2024-04-25 09:44:13,569: DEBUG/MainProcess] | Worker: Building graph...
+[2024-04-25 09:44:13,570: DEBUG/MainProcess] | Worker: New boot order: {Timer, Hub, Pool, Autoscaler, StateDB, Beat, Consumer}
+[2024-04-25 09:44:13,586: DEBUG/MainProcess] | Consumer: Preparing bootsteps.
+[2024-04-25 09:44:13,586: DEBUG/MainProcess] | Consumer: Building graph...
+[2024-04-25 09:44:13,633: DEBUG/MainProcess] | Consumer: New boot order: {Connection, Agent, Events, Heart, Mingle, Gossip, Tasks, Control, event loop}
+[2024-04-25 09:44:13,685: DEBUG/MainProcess] | Worker: Starting Hub
+[2024-04-25 09:44:13,686: DEBUG/MainProcess] ^-- substep ok
+[2024-04-25 09:44:13,686: DEBUG/MainProcess] | Worker: Starting Pool
+[2024-04-25 09:44:15,797: DEBUG/MainProcess] ^-- substep ok
+[2024-04-25 09:44:15,799: DEBUG/MainProcess] | Worker: Starting Consumer
+[2024-04-25 09:44:15,799: DEBUG/MainProcess] | Consumer: Starting Connection
+[2024-04-25 09:44:15,822: INFO/MainProcess] Connected to redis://redis:6379/1
+[2024-04-25 09:44:15,822: DEBUG/MainProcess] ^-- substep ok
+[2024-04-25 09:44:15,822: DEBUG/MainProcess] | Consumer: Starting Events
+[2024-04-25 09:44:15,827: DEBUG/MainProcess] ^-- substep ok
+[2024-04-25 09:44:15,827: DEBUG/MainProcess] | Consumer: Starting Heart
+[2024-04-25 09:44:15,830: DEBUG/MainProcess] ^-- substep ok
+[2024-04-25 09:44:15,830: DEBUG/MainProcess] | Consumer: Starting Mingle
+[2024-04-25 09:44:15,831: INFO/MainProcess] mingle: searching for neighbors
+[2024-04-25 09:44:16,845: INFO/MainProcess] mingle: all alone
+[2024-04-25 09:44:16,845: DEBUG/MainProcess] ^-- substep ok
+[2024-04-25 09:44:16,845: DEBUG/MainProcess] | Consumer: Starting Gossip
+[2024-04-25 09:44:16,851: DEBUG/MainProcess] ^-- substep ok
+[2024-04-25 09:44:16,851: DEBUG/MainProcess] | Consumer: Starting Tasks
+[2024-04-25 09:44:16,856: DEBUG/MainProcess] ^-- substep ok
+[2024-04-25 09:44:16,856: DEBUG/MainProcess] | Consumer: Starting Control
+[2024-04-25 09:44:16,862: DEBUG/MainProcess] ^-- substep ok
+[2024-04-25 09:44:16,862: DEBUG/MainProcess] | Consumer: Starting event loop
+[2024-04-25 09:44:16,862: DEBUG/MainProcess] | Worker: Hub.register Pool...
+[2024-04-25 09:44:16,864: WARNING/MainProcess] /usr/local/lib/python3.9/site-packages/celery/fixups/django.py:203: UserWarning: Using settings.DEBUG leads to a memory
+            leak, never use this setting in production environments!
+  warnings.warn('''Using settings.DEBUG leads to a memory
+
+[2024-04-25 09:44:16,864: INFO/MainProcess] celery@3b068d58602f ready.
+[2024-04-25 09:44:16,864: DEBUG/MainProcess] basic.qos: prefetch_count->64
