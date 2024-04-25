@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from geospatial.models import GeoSpatialData, PalikaGeometry, PalikaUpload, JsonGeometry, BankGeometry
-from geospatial.serializers import  GeoSerializer, PalikaGeometrySerializer,  UploadSerializer, JsonGeometrySerializer, BankGeometrySerializer
+from geospatial.models import GeoSpatialData, PalikaGeometry, PalikaUpload, JsonGeometry, BankGeometry, WeatherForecast
+from geospatial.serializers import  GeoSerializer, PalikaGeometrySerializer,  UploadSerializer, JsonGeometrySerializer, BankGeometrySerializer, WeatherForecastSerializer
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import  APIView
@@ -14,6 +14,11 @@ from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from geospatial.geojsonapi import processapi
+import openmeteo_requests
+# import requests_cache
+import pandas as pd
+from retry_requests import retry
+from datetime import timedelta
 
 class GeoSpatial(viewsets.ModelViewSet):
     queryset= GeoSpatialData.objects.all()
@@ -153,13 +158,118 @@ def palikafilter(request):
     else:
         return Response("ward number is required", status=400)
 
+# =====================================================================================     
+# @api_view(['GET'])
+# def get_current_weather(request):
+#     """
+#     Get the current weather data for a specific location.
+#     """
 
+# class WeatherApi(APIView):
+#     def post(self, request):
+#         retry_session = retry(retries = 5, backoff_factor = 0.2)
+#         openmeteo = openmeteo_requests.Client(session = retry_session)
+        
+#         url = "https://api.open-meteo.com/v1/forecast"
+#         params = {
+#             "latitude": 27.15,
+#             "longitude": 85.9,
+#             "hourly": ["temperature_2m", "precipitation_probability", "precipitation", "rain"],
+#             "timezone":"auto",
+#         }
+#         responses = openmeteo.weather_api(url, params=params)
 
+#         response = responses[0]
+#         print(f"Coordinates {response.Latitude()}°N {response.Longitude()}°E")
+#         print(f"Elevation {response.Elevation()} m asl")
+#         print(f"Timezone {response.Timezone()} {response.TimezoneAbbreviation()}")
+#         print(f"Timezone difference to GMT+0 {response.UtcOffsetSeconds()} s")
 
+#         hourly = response.Hourly()
+#         hourly_temperature_2m = hourly.Variables(0).ValuesAsNumpy()
+#         hourly_precipitation_probability = hourly.Variables(1).ValuesAsNumpy()
+#         hourly_precipitation = hourly.Variables(2).ValuesAsNumpy()
+#         hourly_rain = hourly.Variables(3).ValuesAsNumpy()
+#         hourly_data = {"date": pd.date_range(
+#             start = pd.to_datetime(hourly.Time(), unit = "s", utc = True),
+#             end = pd.to_datetime(hourly.TimeEnd(), unit = "s", utc = True),
+#             freq = pd.Timedelta(seconds = hourly.Interval()),
+#             inclusive = "left"
+#         )}
+#         hourly_data["temperature_2m"] = hourly_temperature_2m[0]
+#         hourly_data["precipitation_probability"] = hourly_precipitation_probability[0]
+#         hourly_data["precipitation"] = hourly_precipitation[0]
+#         hourly_data["rain"] = hourly_rain[0]
+#         date_value = pd.to_datetime(hourly.Time(), unit="s")
+        
+#         obj = WeatherForecast.objects.create(temperature_2m=float(hourly_data["temperature_2m"]), rain=float(hourly_data["rain"]), 
+#                                              precipitation_probability=float(hourly_data["precipitation_probability"]), 
+#                                              precipitation=float(hourly_data["precipitation"]),date= date_value)
+#         print(obj)
+#         return Response(hourly_data)
+#  ======================================================================================
 
+class WeatherApi(APIView):
+    def post(self, request):
+        retry_session = retry(retries = 5, backoff_factor = 0.2)
+        openmeteo = openmeteo_requests.Client(session = retry_session)
 
+        url = "https://api.open-meteo.com/v1/forecast"
+        params = {
+            "latitude": 27.15,
+            "longitude": 85.9,
+            "current": ["relative_humidity_2m", "apparent_temperature", "precipitation", "rain"],
+            "timezone": "auto",
+            "forecast_days": 1
+        }
+        responses = openmeteo.weather_api(url, params=params)
+
+        response = responses[0]
+        print(f"Coordinates {response.Latitude()}°N {response.Longitude()}°E")
+        print(f"Elevation {response.Elevation()} m asl")
+        print(f"Timezone {response.Timezone()} {response.TimezoneAbbreviation()}")
+        print(f"Timezone difference to GMT+0 {response.UtcOffsetSeconds()} s")
+
+        current = response.Current()
+        current_relative_humidity_2m = current.Variables(0).Value()
+        current_apparent_temperature = current.Variables(1).Value()
+        current_precipitation = current.Variables(2).Value()
+        current_rain = current.Variables(3).Value()
+        print(current_apparent_temperature)
+        
+        hourly_data = {"date": pd.date_range(
+            start = pd.to_datetime(current.Time(), unit = "s", utc = True),
+            end = pd.to_datetime(current.TimeEnd(), unit = "s", utc = True),
+            freq = pd.Timedelta(seconds = current.Interval()),
+            inclusive = "left"
+        )}
+        hourly_data["temperature_2m"] = current_apparent_temperature
+        hourly_data["humidity"] = current_relative_humidity_2m
+        hourly_data["precipitation"] = current_precipitation
+        hourly_data["rain"] = current_rain
+        # date_value = pd.to_datetime(current.Time(), unit="s")
+        
+
+        date_value = pd.to_datetime(current.Time(), unit="s") + timedelta(hours=5, minutes=52)
 
         
+        obj = WeatherForecast.objects.create(temperature_2m=float(hourly_data["temperature_2m"]), rain=float(hourly_data["rain"]), 
+                                             humidity=float(hourly_data["humidity"]), 
+                                             precipitation=float(hourly_data["precipitation"]),date= date_value)
+        print(obj)
+        print(f"Current time {current.Time()}")
+        print(f"Current relative_humidity_2m {current_relative_humidity_2m}")
+        print(f"Current apparent_temperature {current_apparent_temperature}")
+        print(f"Current precipitation {current_precipitation}")
+        print(f"Current rain {current_rain}")
+        return Response(WeatherForecast.objects.filter(id=obj.id).values())
     
+
+
+
+
+
     
+
+
 

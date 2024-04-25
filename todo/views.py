@@ -131,8 +131,6 @@ def task_detail(request,pk):
         task.delete()
         return HttpResponse(status=204)
 
-
-# logger
     
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])    

@@ -56,6 +56,22 @@ services:
     networks:
     - task-network
 
+  beat:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    entrypoint: "celery -A todo_list beat -f /logs/worker.logs -l DEBUG"
+    depends_on:
+      - web
+      - redis
+    volumes:
+      - .:/code
+    env_file:
+      - .env
+    networks:
+      - task-network
+
 networks:
   task-network:
     driver: bridge
