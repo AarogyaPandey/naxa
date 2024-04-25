@@ -6,3 +6,11 @@ db.sqlite3
 static
 static/
 media/
+logs
+logs/
+celerybeat-schedule
+celerybeat-schedule/
+.cache.sqlite
+.cache.sqlite/
+**/__pycache__/
+**/**/__pycache__/**

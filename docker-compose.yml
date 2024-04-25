@@ -14,7 +14,7 @@ services:
       - task-network
     depends_on:
       - db
-    entrypoint: ./entrypoint.sh
+    entrypoint: bash /code/entrypoint.sh
 
   db:
     image: postgis/postgis:16-3.4-alpine
@@ -44,7 +44,7 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: always
-    entrypoint: "celery -A todo_list worker -f /logs/worker.logs -l DEBUG"
+    entrypoint: "celery -A todo_list worker -l DEBUG"
     depends_on:
       - web
       - redis

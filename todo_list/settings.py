@@ -155,3 +155,4 @@ CELERY_BROKER_URL = 'redis://redis:6379/1'
 # os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'todo_list.settings')
 CELERY_RESULT_BACKEND= "redis://redis:6379/1"
 CELERY_TIMEZONE='Asia/Kathmandu'
+
