@@ -39,7 +39,7 @@ def processapi(data_file,user_id,file_id):
                                     bbox_area=bbox_area, bbox=bbox, extra_json=attr_data, user_id=user_id)
                                             
     return Response('geojson file uploaded successfully')
-@shared_task
+@shared_task(serializer=json)
 def weatherpostapi():
     retry_session = retry(retries = 5, backoff_factor = 0.2)
     openmeteo = openmeteo_requests.Client(session = retry_session)
