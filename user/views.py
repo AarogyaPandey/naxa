@@ -18,12 +18,15 @@ class SignUp(APIView):
 
 @api_view(["POST"])
 def postapi(request):
+    print(request.data)
     user = authenticate(username =request.data["username"], password = request.data["password"] )
     print(user)
     if user:
-        token = Token.objects.get_or_create(user=user)
-        return Response({"token": token.key,
-                         "user_id":user.id,})
+        token, _ = Token.objects.get_or_create(user=user)
+        return Response({
+            "token": token.key,
+            "user_id":user.id,
+            })
     else:
         return Response({"error": "Invalid credentials"}, status=401)
 
