@@ -13,7 +13,7 @@ from retry_requests import retry
 from datetime import timedelta
 
 
-# @shared_task
+@shared_task
 def processapi(data_file,user_id,file_id):
     file_obj = PalikaUpload.objects.get(id = file_id)
     print(f"file path: {data_file}")

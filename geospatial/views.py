@@ -15,6 +15,7 @@ from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from geospatial.geojsonapi import processapi
 import openmeteo_requests
+from django.db.models import Q
 # import requests_cache
 import pandas as pd
 from retry_requests import retry
@@ -76,7 +77,7 @@ class Geom(APIView):
                 return Response('Shapefile uploaded successfully')
             elif file_type=="geojson": 
                 print("is geo json") 
-                processapi(obj.data_file.path,request.user.id,obj.id)
+                processapi.delay(obj.data_file.path,request.user.id,obj.id)
                 return Response("The data is being uploaded...")                          
         except Exception as e:
             return Response(f'Error uploading shapefile: {str(e)}')
@@ -213,6 +214,10 @@ class WeatherApi(APIView):
         print(f"Current precipitation {current_precipitation}")
         print(f"Current rain {current_rain}")
         return Response(WeatherForecast.objects.filter(id=obj.id).values())
+    
+    def get(self, request):
+        forecasts = WeatherForecast.objects.filter(temperature_2m__gte=30).values()  
+        return Response(forecasts)
     
 
 # =====================================================================================     
