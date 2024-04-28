@@ -13,7 +13,7 @@ from retry_requests import retry
 from datetime import timedelta
 
 
-# @shared_task
+@shared_task
 def processapi(data_file,user_id,file_id):
     file_obj = PalikaUpload.objects.get(id = file_id)
     print(f"file path: {data_file}")
@@ -39,7 +39,7 @@ def processapi(data_file,user_id,file_id):
                                     bbox_area=bbox_area, bbox=bbox, extra_json=attr_data, user_id=user_id)
                                             
     return Response('geojson file uploaded successfully')
-@shared_task
+@shared_task(serializer=json)
 def weatherpostapi():
     retry_session = retry(retries = 5, backoff_factor = 0.2)
     openmeteo = openmeteo_requests.Client(session = retry_session)
