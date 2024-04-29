@@ -39,8 +39,9 @@ def processapi(data_file,user_id,file_id):
                                     bbox_area=bbox_area, bbox=bbox, extra_json=attr_data, user_id=user_id)
                                             
     return Response('geojson file uploaded successfully')
-@shared_task(serializer=json)
+@shared_task
 def weatherpostapi():
+    
     retry_session = retry(retries = 5, backoff_factor = 0.2)
     openmeteo = openmeteo_requests.Client(session = retry_session)
 
@@ -79,7 +80,6 @@ def weatherpostapi():
     hourly_data["rain"] = current_rain
     # date_value = pd.to_datetime(current.Time(), unit="s")
     
-
     date_value = pd.to_datetime(current.Time(), unit="s") + timedelta(hours=5, minutes=52)
 
     
@@ -92,4 +92,4 @@ def weatherpostapi():
     print(f"Current apparent_temperature {current_apparent_temperature}")
     print(f"Current precipitation {current_precipitation}")
     print(f"Current rain {current_rain}")
-    return Response(WeatherForecast.objects.filter(id=obj.id).values())
+    # return Response(WeatherForecast.objects.filter(id=obj.id).values())
