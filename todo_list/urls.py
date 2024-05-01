@@ -10,4 +10,5 @@ urlpatterns = [
     path('api/task/', include('todo.urls')),
     path('api/user/', include('user.urls')),
     path('api/geo/', include('geospatial.urls')),
+    path('api/map/', include('map.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
