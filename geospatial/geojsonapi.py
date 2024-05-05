@@ -16,9 +16,7 @@ from datetime import timedelta
 @shared_task
 def processapi(data_file,user_id,file_id):
     file_obj = PalikaUpload.objects.get(id = file_id)
-    print(f"file path: {data_file}")
     gdf = gpd.read_file(data_file)
-    print("check check")
     for index, row in gdf.iterrows():
         geom = GEOSGeometry(str(row['geometry']))
         attr_data=row.drop(["geometry"]).to_dict()
@@ -56,17 +54,12 @@ def weatherpostapi():
     responses = openmeteo.weather_api(url, params=params)
 
     response = responses[0]
-    print(f"Coordinates {response.Latitude()}°N {response.Longitude()}°E")
-    print(f"Elevation {response.Elevation()} m asl")
-    print(f"Timezone {response.Timezone()} {response.TimezoneAbbreviation()}")
-    print(f"Timezone difference to GMT+0 {response.UtcOffsetSeconds()} s")
 
     current = response.Current()
     current_relative_humidity_2m = current.Variables(0).Value()
     current_apparent_temperature = current.Variables(1).Value()
     current_precipitation = current.Variables(2).Value()
     current_rain = current.Variables(3).Value()
-    print(current_apparent_temperature)
     
     hourly_data = {"date": pd.date_range(
         start = pd.to_datetime(current.Time(), unit = "s", utc = True),
@@ -86,10 +79,4 @@ def weatherpostapi():
     obj = WeatherForecast.objects.create(temperature_2m=float(hourly_data["temperature_2m"]), rain=float(hourly_data["rain"]), 
                                             humidity=float(hourly_data["humidity"]), 
                                             precipitation=float(hourly_data["precipitation"]),date= date_value)
-    print(obj)
-    print(f"Current time {current.Time()}")
-    print(f"Current relative_humidity_2m {current_relative_humidity_2m}")
-    print(f"Current apparent_temperature {current_apparent_temperature}")
-    print(f"Current precipitation {current_precipitation}")
-    print(f"Current rain {current_rain}")
-    # return Response(WeatherForecast.objects.filter(id=obj.id).values())
+ 
