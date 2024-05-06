@@ -8,7 +8,6 @@ from map.models import FeatureCollection, Category
 # Create your tests here.
 def process_layer(layer_id, user_id, category):
     layer=Layer.objects.get(id=layer_id)
-    # category=Category.objects.get(id=layer.category_id)
     file=str(layer.file_upload.path)
     split_tup=os.path.splitext(file)
     file_extension=split_tup[1]
@@ -19,7 +18,6 @@ def process_layer(layer_id, user_id, category):
             try:
                 gdf=gpd.read_file(shapefile)
                 geometry_type=gdf["geometry"].iloc[0].geom_type
-                print(geometry_type)
                 total_bounds=gdf.total_bounds
                 bound_dict={"total_bounds": total_bounds.tolist()}
                 user_instance=User.objects.get(id=user_id)
@@ -34,24 +32,10 @@ def process_layer(layer_id, user_id, category):
                         created_by=user_instance
                         
                     )
-# # ================================================================
-#                     category, _ = Category.objects.get_or_create(
-#                     layer=layer,
-#                     geom_type=geometry_type,
-#                     bbox=bound_dict,
-#                     created_by=user_instance
-# )
-#                     layer.category = category
-#                     layer.geom_type = geometry_type
-#                     layer.bbox = bound_dict
-#                     layer.created_by = user_instance
-#                     layer.save()
-#                     # catttttegory
-# # ============================================================
+
                     layer.category_id=category
                     layer.geom_type=geometry_type
                     layer.bbox=bound_dict
-                    # print('is it running')
                     layer.created_by=user_instance
                     layer.save()
                     
@@ -62,6 +46,6 @@ def process_layer(layer_id, user_id, category):
         return str(e)
     
                 
-            #The Proposal 
+
             
-    
+                
