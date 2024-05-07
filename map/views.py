@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from map.serializers import LayerSerializer
+from map.serializers import LayerSerializer, FeatureColletionSerializer
 from django.core.serializers import serialize
 from map.models import Layer
 from rest_framework import filters
@@ -9,8 +9,12 @@ from rest_framework.response import Response
 from map.tasks import process_layer
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
-from map.models import Category
+from map.models import Category, FeatureCollection
 from rest_framework.views import APIView
+from django.http import JsonResponse
+from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.gis.geos import GEOSGeometry
+import json
 
 class LayerViewSet(viewsets.ModelViewSet):
     queryset = Layer.objects.all()
@@ -98,3 +102,48 @@ class GetApi(APIView):
             'categories': category_data,
             'layers': layer_data
         })
+# class GetLayer(APIView):
+#     def get(self, request, *args, **kwargs):
+        # layer_id=request.query_params.get('layer_id' ,None)
+        # if layer_id:
+        #     query=FeatureCollection.objects.filter(id=layer_id)
+        #     data=serialize('geojson', query, geometry_field="geom")
+        #     data=json.loads(data)
+        #     return Response(data, content_type='application/json')
+        # =============================================================================================================
+        
+        # layer_id=request.query_params.get('layer_id' ,None)
+        # if layer_id:
+        #     query=FeatureCollection.objects.filter(id=layer_id)
+        #     serializer=FeatureColletionSerializer(query, many=True)
+        #     return JsonResponse(serializer.data, content_type='application/json', safe=False)
+        # else:
+        #     return Response("layer is required", status=400)
+        
+# ==============================================================================================================================
+class GetLayer(APIView):
+    def get(self, request, *args, **kwargs):
+        layer_id = request.query_params.get('layer_id')
+        if not layer_id:
+            return JsonResponse({
+                'message': 'error',
+                'details': 'Layer ID is required'
+            }, status=400)
+        
+        try:
+            query = FeatureCollection.objects.filter(id=layer_id)
+            if not query.exists():
+                return JsonResponse({
+                    'message': 'error',
+                    'details': 'Layer not found'
+                }, status=404)
+            
+            data = serialize('geojson', query, geometry_field="geom")
+            data = json.loads(data)
+            return JsonResponse(data, content_type='application/json')
+        
+        except Exception as e:
+            return JsonResponse({
+                'message': 'error',
+                'details': str(e)
+            }, status=500)
