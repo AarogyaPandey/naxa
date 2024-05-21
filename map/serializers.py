@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from map.models import Category, FeatureCollection, Layer
+from map.models import Category, FeatureCollection, Layer, CsvUpload
 
 class  CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,4 +14,9 @@ class  FeatureColletionSerializer(serializers.ModelSerializer):
 class LayerSerializer(serializers.ModelSerializer):
     class Meta:
         model=  Layer
+        fields='__all__'
+        
+class CsvSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=  CsvUpload
         fields='__all__'

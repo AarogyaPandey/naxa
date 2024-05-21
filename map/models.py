@@ -33,3 +33,15 @@ class FeatureCollection(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     created_by=models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='user_layer_feature')
     
+class CsvUpload(models.Model):
+    file_upload=models.FileField(upload_to='map', blank=True, null=True)
+    created_by=models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='user_csv')
+    created_at=models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    status=models.CharField(max_length=100, blank=True, null=True)
+    error=models.TextField(max_length=500, blank=True, null=True)
+    layer=models.ForeignKey(Layer, on_delete=models.CASCADE, related_name='csv_layer', blank=True, null=True)
+    category=models.ForeignKey(Category, on_delete=models.CASCADE, related_name='csv_category', blank=True, null=True)
+    
+    def __str__(self):
+        return self.file_upload.name
+    
